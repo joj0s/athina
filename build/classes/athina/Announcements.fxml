@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane id="AnchorPane" prefHeight="562.0" prefWidth="931.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="athina.FXMLDocumentController">
+    <children>
+      <ComboBox layoutX="777.0" layoutY="71.0" prefWidth="80.0" />
+      <Label layoutX="760.0" layoutY="41.0" text="Φίλτρο Εξαμήνου" />
+      <Button layoutX="753.0" layoutY="440.0" mnemonicParsing="false" text="Νέα Ανακοίνωση" />
+      <TableView prefHeight="562.0" prefWidth="680.0">
+        <columns>
+          <TableColumn prefWidth="450.0" style="background-color: #32936f;" text="Τίτλος Ανακοίνωσης" />
+          <TableColumn minWidth="0.0" prefWidth="90.0" text="Εξάμηνο" />
+            <TableColumn minWidth="0.0" prefWidth="141.0" text="Ημερομηνία" />
+        </columns>
+      </TableView>
+      <ScrollBar layoutX="672.0" orientation="VERTICAL" prefHeight="562.0" prefWidth="17.0" />
+    </children>
+</AnchorPane>

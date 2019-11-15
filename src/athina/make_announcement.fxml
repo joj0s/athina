@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+
+<AnchorPane id="AnchorPane" prefHeight="581.0" prefWidth="821.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8">
+   <children>
+      <TextArea layoutX="35.0" layoutY="212.0" prefHeight="300.0" prefWidth="750.0" />
+      <TextField layoutX="35.0" layoutY="115.0" prefHeight="25.0" prefWidth="468.0" />
+      <ComboBox layoutX="635.0" layoutY="115.0" prefWidth="150.0" />
+      <Label layoutX="35.0" layoutY="93.0" text="Τίτλος Ανακοίνωσης" />
+      <Label layoutX="684.0" layoutY="93.0" text="Μάθημα" />
+      <Label layoutX="35.0" layoutY="183.0" text="Σώμα Ανακοίνωσης" />
+      <Button layoutX="678.0" layoutY="533.0" mnemonicParsing="false" text="ΔΗΜΟΣΙΕΥΣΗ" />
+      <Button layoutX="35.0" layoutY="14.0" mnemonicParsing="false" text="&lt; Επιστροφη" />
+      <Label layoutX="245.0" layoutY="538.0" text="ΜΗΝΥΜΑ ΚΑΤΑΣΤΑΣΗΣ" />
+   </children>
+</AnchorPane>
