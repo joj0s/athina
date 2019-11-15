@@ -25,6 +25,8 @@ public class Course {
         this.professor = professor;
     }
     
-    public void getRegistrations(){}
+    public CourseRegistration[] getCurrentRegistrations() {
+        return null;
+    }
     
 }

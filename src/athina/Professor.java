@@ -11,9 +11,19 @@ package athina;
  */
 public class Professor extends User{
     
+    private Course[] coursesTaught;
     
     public Professor(String username, String firstName, String lastName, String password) {
         super(username, firstName, lastName, password);
     }
+
+    public Course[] getCoursesTaught() {
+        return coursesTaught;
+    }
+
+    public void setCoursesTaught(Course[] coursesTaught) {
+        this.coursesTaught = coursesTaught;
+    }
+    
     
 }
