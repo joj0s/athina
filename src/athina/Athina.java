@@ -19,7 +19,7 @@ public class Athina extends Application {
     
     @Override
     public void start(Stage stage) throws Exception {
-        Parent root = FXMLLoader.load(getClass().getResource("AnnouncementsScene.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("MasterScene.fxml"));
         
         Scene scene = new Scene(root);
         
