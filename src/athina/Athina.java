@@ -34,4 +34,6 @@ public class Athina extends Application {
         launch(args);
     }
     
+    static User user;
+    
 }
