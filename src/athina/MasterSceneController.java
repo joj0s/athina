@@ -101,4 +101,21 @@ public class MasterSceneController implements Initializable {
         }    
     }
     
+    public void registerButtonPressed(ActionEvent event) {
+        
+        try{
+            Scene registerScene = new Scene (FXMLLoader.load(getClass().getResource("RegisterUserScene.fxml")));
+            Stage window = (Stage)((Node)event.getSource()).getScene().getWindow();
+            window.setScene(registerScene);
+            window.setTitle("Athina - Εγγραφή χρήστη");
+            window.show();
+        }
+        catch(IOException e){
+            e.printStackTrace();
+        }   
+        
+    }
+    
+    
+    
 }
