@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.text.*?>
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+
+<AnchorPane id="AnchorPane" prefHeight="548.0" prefWidth="759.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8" fx:controller="athina.CourseRegistrationSceneController">
+   <children>
+      <Button layoutX="23.0" layoutY="14.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="90.0" text="Επιστροφή" />
+      <Label alignment="CENTER" layoutX="275.0" layoutY="14.0" prefHeight="30.0" prefWidth="210.0" text="ΕΓΓΡΑΦΗ ΜΑΘΗΜΑΤΩΝ">
+         <font>
+            <Font size="17.0" />
+         </font>
+      </Label>
+      <TableView fx:id="availableCoursesTable" layoutX="23.0" layoutY="100.0" prefHeight="292.0" prefWidth="335.0">
+        <columns>
+          <TableColumn fx:id="availableCoursesSemester" minWidth="0.0" prefWidth="69.0" text="Εξάμηνο" />
+            <TableColumn fx:id="availableCoursesCredits" prefWidth="75.0" text="ΔΜ" />
+          <TableColumn fx:id="availableCoursesName" prefWidth="189.0" text="Μάθημα" />
+        </columns>
+      </TableView>
+      <TableView fx:id="selectedCoursesTable" layoutX="397.0" layoutY="100.0" prefHeight="292.0" prefWidth="335.0">
+         <columns>
+            <TableColumn fx:id="selectedCoursesName" prefWidth="189.0" text="Μάθημα" />
+            <TableColumn fx:id="selectedCoursesSemester" minWidth="0.0" prefWidth="69.0" text="Εξάμηνο" />
+            <TableColumn fx:id="selectedCoursesCredits" prefWidth="75.0" text="ΔΜ" />
+         </columns>
+      </TableView>
+      <Label fx:id="errorLabel" alignment="CENTER" layoutX="217.0" layoutY="482.0" prefHeight="24.0" prefWidth="326.0" />
+      <Label alignment="CENTER" layoutX="105.0" layoutY="65.0" prefHeight="24.0" prefWidth="172.0" text="Διαθεσιμα μαθηματα" />
+      <Label alignment="CENTER" layoutX="479.0" layoutY="65.0" prefHeight="24.0" prefWidth="172.0" text="Επιλεγμενα μαθηματα" />
+      <Button layoutX="131.0" layoutY="404.0" mnemonicParsing="false" prefHeight="41.0" prefWidth="120.0" text="Προσθηκη" />
+      <Button layoutX="505.0" layoutY="412.0" mnemonicParsing="false" prefHeight="41.0" prefWidth="120.0" text="Υποβολη" />
+   </children>
+</AnchorPane>

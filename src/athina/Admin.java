@@ -11,8 +11,8 @@ package athina;
  */
 public class Admin extends User{
     
-    public Admin(String username, String firstName, String lastName, String password) {
-        super(username, firstName, lastName, password);
+    public Admin(String username, String firstName, String lastName) {
+        super(username, firstName, lastName);
     }
     
 }
