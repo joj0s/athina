@@ -5,16 +5,22 @@
  */
 package athina;
 
+import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Node;
+import javafx.scene.Scene;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.stage.Stage;
 
 /**
  * FXML Controller class
@@ -65,7 +71,17 @@ public class CourseGradesSceneController implements Initializable {
     }
     
     
-    public void backButtonPressed() {
-        
+    public void backButtonPressed(ActionEvent event) {
+        try{
+            Scene scene = new Scene (FXMLLoader.load(getClass().getResource("MasterScene.fxml")));
+            Stage window = (Stage)((Node)event.getSource()).getScene().getWindow();
+            window.setScene(scene);
+            window.setResizable(false);
+            window.setTitle("Athina");
+            window.show();
+        }
+        catch(IOException e){
+            e.printStackTrace();
+        }
     }
 }
