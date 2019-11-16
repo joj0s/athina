@@ -24,6 +24,7 @@ public class Athina extends Application {
         Scene scene = new Scene(root);
         
         stage.setScene(scene);
+        System.out.println(System.getenv("QT_DEVICE_PIXEL_RATIO"));
         stage.show();
     }
 
