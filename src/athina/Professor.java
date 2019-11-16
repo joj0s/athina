@@ -13,8 +13,8 @@ public class Professor extends User{
     
     private Course[] coursesTaught;
     
-    public Professor(String username, String firstName, String lastName) {
-        super(username, firstName, lastName);
+    public Professor(String username,String password, String firstName, String lastName) {
+        super(username, password, firstName, lastName);
     }
 
     public Course[] getCoursesTaught() {

@@ -13,12 +13,13 @@ import java.util.Date;
  */
 public class Data {
     
-    public Student[] students;
-    public Professor[] professors;
-    public Admin[] admins;
-    public Course[] courses;
-    public CourseRegistration[] registrations;
-    public Announcement[] announcements;
+    public static User[] users;
+    public static Student[] students;
+    public static Professor[] professors;
+    public static Admin[] admins;
+    public static Course[] courses;
+    public static CourseRegistration[] registrations;
+    public static Announcement[] announcements;
     
     public Data() {
         students = new Student[50];
@@ -30,15 +31,15 @@ public class Data {
     }
     
     public void initializeData() {
-        students[0] = new Student("ggeorgiou", "Giorgos", "Georgiou",3 ,new Date());
-        students[1] = new Student("dpliakos", "Dimitris", "Pliakos",5 ,new Date());
-        students[2] = new Student("nnikas", "Nikos", "Nikas",3 ,new Date());
+        students[0] = new Student("ggeorgiou","123", "Giorgos", "Georgiou",3 ,new Date());
+        students[1] = new Student("dpliakos","123", "Dimitris", "Pliakos",5 ,new Date());
+        students[2] = new Student("nnikas", "123","Nikos", "Nikas",3 ,new Date());
         
-        professors[0] = new Professor("kdiamant", "Kostas", "Diamantaras");
-        professors[1] = new Professor("gtespas", "Giorgos", "Tespas");
-        professors[0] = new Professor("gkeis", "Giannis", "Keis");
+        professors[0] = new Professor("kdiamant","123", "Kostas", "Diamantaras");
+        professors[1] = new Professor("gtespas", "123","Giorgos", "Tespas");
+        professors[0] = new Professor("gkeis", "123","Giannis", "Keis");
         
-        admins[0] = new Admin("mkalou", "Maria", "Kalou");
+        admins[0] = new Admin("mkalou", "123","Maria", "Kalou");
         
         courses[0] = new Course(1, "Mathimatika 1", 6, 1, professors[2]);
         courses[1] = new Course(2, "Arxitektonikh HY", 6, 3, professors[0]);
@@ -51,6 +52,8 @@ public class Data {
         announcements[0] =  new Announcement(1, "Anakoinwsi 1", "Auto einai to swma ths anakoinvwshs", new Date(), admins[0]);
         announcements[0] =  new Announcement(1, "Anakoinwsi Mathimatikwn", "Auto einai to swma ths anakoinvwshs mathimatikwn",
                 new Date(), professors[0], courses[0]);
+        
+ 
         
     }
 }

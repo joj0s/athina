@@ -16,9 +16,9 @@ public class Student extends User{
     private int currentSemester;
     private Date dateEnrolled;
 
-    public Student(String username, String firstName,
+    public Student(String username,String password, String firstName,
         String lastName,int currentSemester,Date dateEnrolled) {
-        super(username, firstName, lastName);
+        super(username, password, firstName, lastName);
         this.currentSemester = currentSemester;
         this.dateEnrolled = dateEnrolled;
     }
