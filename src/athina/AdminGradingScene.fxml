@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.text.*?>
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+
+<AnchorPane id="AnchorPane" prefHeight="549.0" prefWidth="827.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8" fx:controller="athina.AdminGradingSceneController">
+   <children>
+      <Button layoutX="14.0" layoutY="14.0" mnemonicParsing="false" onAction="#backButtonPressed" prefHeight="22.0" prefWidth="107.0" text="Επιστροφη" />
+      <Label alignment="CENTER" layoutX="288.0" layoutY="27.0" prefHeight="40.0" prefWidth="232.0" text="Βαθμολογιες Φοιτητων">
+         <font>
+            <Font size="19.0" />
+         </font>
+      </Label>
+      <TableView fx:id="gradesTable" layoutX="139.0" layoutY="149.0" prefHeight="309.0" prefWidth="549.0">
+        <columns>
+          <TableColumn fx:id="gradesTableUsername" prefWidth="140.0" text="Username" />
+          <TableColumn fx:id="gradesTableName" minWidth="7.0" prefWidth="198.0" text="Επώνυμο" />
+            <TableColumn fx:id="gradesTableSurname" prefWidth="128.0" text="Όνομα" />
+            <TableColumn fx:id="gradesTableGrade" prefWidth="82.0" text="Βαθμός" />
+        </columns>
+      </TableView>
+      <ComboBox fx:id="coursePicker" layoutX="339.0" layoutY="85.0" prefWidth="150.0" promptText="ΜΑΘΗΜΑ" />
+      <Button layoutX="365.0" layoutY="478.0" mnemonicParsing="false" prefHeight="34.0" prefWidth="98.0" text="Τροποποίηση" />
+   </children>
+</AnchorPane>
