@@ -116,6 +116,24 @@ public class MasterSceneController implements Initializable {
         
     }
     
+    public void gradesButtonPressed(ActionEvent event) {
+        
+        try{
+            Scene scene = null;
+            if (Athina.user instanceof Admin)
+                scene = new Scene (FXMLLoader.load(getClass().getResource("AdminGradingScene.fxml")));
+            else
+                scene = new Scene (FXMLLoader.load(getClass().getResource("CourseGradesScene.fxml")));
+            Stage window = (Stage)((Node)event.getSource()).getScene().getWindow();
+            window.setScene(scene);
+            window.setTitle("Athina - Βαθμολογίες");
+            window.show();
+        }
+        catch(IOException e){
+            e.printStackTrace();
+        }   
+    }
+    
     
     
 }

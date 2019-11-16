@@ -5,6 +5,7 @@
  */
 package athina;
 
+import java.util.ArrayList;
 import java.util.Date;
 
 /**
@@ -26,6 +27,18 @@ public class Student extends User{
     
     public Course[] getPassedCourses() {
         return null;
+    }
+    
+    public ArrayList<CourseRegistration> getRegistrations() {
+        int i = 0;
+        ArrayList<CourseRegistration> currentRegistrations = new ArrayList<>();
+        while (Data.registrations[i] != null){
+            if(Data.registrations[i].getStudent().equals(this))
+                currentRegistrations.add(Data.registrations[i]);
+            i++;
+        }
+        
+        return currentRegistrations;
     }
 
     public int getCurrentSemester() {
