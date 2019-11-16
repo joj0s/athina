@@ -13,12 +13,13 @@ import java.util.Date;
  */
 public class Data {
     
-    public Student[] students;
-    public Professor[] professors;
-    public Admin[] admins;
-    public Course[] courses;
-    public CourseRegistration[] registrations;
-    public Announcement[] announcements;
+    public static User[] users;
+    public static Student[] students;
+    public static Professor[] professors;
+    public static Admin[] admins;
+    public static Course[] courses;
+    public static CourseRegistration[] registrations;
+    public static Announcement[] announcements;
     
     public Data() {
         students = new Student[50];
@@ -27,6 +28,7 @@ public class Data {
         courses = new Course[30];
         registrations = new CourseRegistration[50];
         announcements = new Announcement[50];
+        users = new User[100];
     }
     
     public void initializeData() {
@@ -51,6 +53,8 @@ public class Data {
         announcements[0] =  new Announcement(1, "Anakoinwsi 1", "Auto einai to swma ths anakoinvwshs", new Date(), admins[0]);
         announcements[0] =  new Announcement(1, "Anakoinwsi Mathimatikwn", "Auto einai to swma ths anakoinvwshs mathimatikwn",
                 new Date(), professors[0], courses[0]);
+        
+ 
         
     }
 }
