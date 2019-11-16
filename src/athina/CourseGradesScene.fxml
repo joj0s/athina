@@ -18,7 +18,7 @@
       <TableView fx:id="gradesTable" layoutX="190.0" layoutY="66.0" prefHeight="292.0" prefWidth="354.0">
         <columns>
           <TableColumn fx:id="gradesTableCourse" prefWidth="217.0" text="Μαθημα" />
-          <TableColumn fx:id="gradeTableSemester" minWidth="0.0" prefWidth="65.0" text="Εξαμηνο" />
+          <TableColumn fx:id="gradesTableSemester" minWidth="0.0" prefWidth="65.0" text="Εξαμηνο" />
             <TableColumn fx:id="gradesTableGrade" prefWidth="75.0" text="Βαθμος" />
         </columns>
       </TableView>
