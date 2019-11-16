@@ -62,6 +62,10 @@ public class EditGradeSceneController implements Initializable {
         
         try{
             float value = Float.parseFloat(gradeField.getText());
+            if (value>10 || value<0){
+                errorLabel.setText("Λάθος αριθμός");
+                return;
+            }
             selectedRegistration.setGrade(value);
             errorLabel.setText("Επιτυχής εισαγωγή βαθμού");
         }
