@@ -16,12 +16,26 @@ public class CourseRegistration {
     private String registrationSemester;
     private float grade;
 
-    public CourseRegistration(Student student, Course course, String registrationSemester, float grade) {
+    public CourseRegistration(Student student, Course course, String registrationSemester) {
         this.student = student;
         this.course = course;
         this.registrationSemester = registrationSemester;
+    }
+
+    public Course getCourse() {
+        return course;
+    }
+
+    public void setGrade(float grade) {
         this.grade = grade;
     }
+
+    public float getGrade() {
+        return grade;
+    }
+    
+    
+    
     
     
 }

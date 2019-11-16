@@ -17,8 +17,8 @@ public class Student extends User{
     private Date dateEnrolled;
 
     public Student(String username, String firstName,
-            String lastName, String password, int currentSemester,Date dateEnrolled) {
-        super(username, firstName, lastName, password);
+        String lastName,int currentSemester,Date dateEnrolled) {
+        super(username, firstName, lastName);
         this.currentSemester = currentSemester;
         this.dateEnrolled = dateEnrolled;
     }
@@ -27,5 +27,22 @@ public class Student extends User{
     public Course[] getPassedCourses() {
         return null;
     }
+
+    public int getCurrentSemester() {
+        return currentSemester;
+    }
+
+    public void setCurrentSemester(int currentSemester) {
+        this.currentSemester = currentSemester;
+    }
+
+    public Date getDateEnrolled() {
+        return dateEnrolled;
+    }
+
+    public void setDateEnrolled(Date dateEnrolled) {
+        this.dateEnrolled = dateEnrolled;
+    }
+    
     
 }

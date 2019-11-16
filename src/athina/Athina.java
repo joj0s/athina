@@ -31,7 +31,11 @@ public class Athina extends Application {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
+        Data data = new Data();
+        data.initializeData();
         launch(args);
     }
+    
+    static User user;
     
 }
