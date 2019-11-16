@@ -90,11 +90,11 @@ public class LoginSceneController implements Initializable {
         
     }
     
-    private void goToMaster(ActionEvent event) {
+    public void goToMaster(ActionEvent event) {
         try{
-            Scene loginScene = new Scene (FXMLLoader.load(getClass().getResource("MasterScene.fxml")));
+            Scene scene = new Scene (FXMLLoader.load(getClass().getResource("MasterScene.fxml")));
             Stage window = (Stage)((Node)event.getSource()).getScene().getWindow();
-            window.setScene(loginScene);
+            window.setScene(scene);
             window.setResizable(false);
             window.setTitle("Athina");
             window.show();

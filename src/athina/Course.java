@@ -33,7 +33,6 @@ public class Course {
         ArrayList<CourseRegistration> registrations = new ArrayList<>();
         
         while(Data.registrations[i] != null){
-            System.out.println(i);
             if (Data.registrations[i].getCourse() == this){
                 registrations.add(Data.registrations[i]);
             }
