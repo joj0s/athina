@@ -116,6 +116,22 @@ public class MasterSceneController implements Initializable {
         
     }
     
+    public void registerCourse(ActionEvent event){
+        
+        try{
+            Scene courses = new Scene (FXMLLoader.load(getClass().getResource("/athina/CourseRegistrationScene.fxml")));
+            Stage window = (Stage)((Node)event.getSource()).getScene().getWindow();
+            window.setScene(courses);
+            window.setResizable(false);
+            window.setTitle("Athina - Δήλωση Μαθημάτων");
+            window.show();
+        }
+        catch(IOException e){
+            e.printStackTrace();
+        }
+        
+    }
+    
     
     
 }

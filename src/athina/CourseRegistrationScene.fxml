@@ -7,10 +7,9 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-
-<AnchorPane id="AnchorPane" prefHeight="548.0" prefWidth="759.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8" fx:controller="athina.CourseRegistrationSceneController">
+<AnchorPane id="AnchorPane" prefHeight="548.0" prefWidth="759.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="athina.CourseRegistrationSceneController">
    <children>
-      <Button layoutX="23.0" layoutY="14.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="90.0" text="Επιστροφή" />
+      <Button layoutX="23.0" layoutY="14.0" mnemonicParsing="false" onAction="#backButtonPressed" prefHeight="30.0" prefWidth="90.0" text="Επιστροφή" />
       <Label alignment="CENTER" layoutX="275.0" layoutY="14.0" prefHeight="30.0" prefWidth="210.0" text="ΕΓΓΡΑΦΗ ΜΑΘΗΜΑΤΩΝ">
          <font>
             <Font size="17.0" />
@@ -33,7 +32,9 @@
       <Label fx:id="errorLabel" alignment="CENTER" layoutX="217.0" layoutY="482.0" prefHeight="24.0" prefWidth="326.0" />
       <Label alignment="CENTER" layoutX="105.0" layoutY="65.0" prefHeight="24.0" prefWidth="172.0" text="Διαθεσιμα μαθηματα" />
       <Label alignment="CENTER" layoutX="479.0" layoutY="65.0" prefHeight="24.0" prefWidth="172.0" text="Επιλεγμενα μαθηματα" />
-      <Button layoutX="131.0" layoutY="404.0" mnemonicParsing="false" prefHeight="41.0" prefWidth="120.0" text="Προσθηκη" />
-      <Button layoutX="505.0" layoutY="412.0" mnemonicParsing="false" prefHeight="41.0" prefWidth="120.0" text="Υποβολη" />
+      <Button layoutX="131.0" layoutY="404.0" mnemonicParsing="false" onAction="#addButtonPresses" prefHeight="41.0" prefWidth="120.0" text="Προσθηκη" />
+      <Button layoutX="505.0" layoutY="412.0" mnemonicParsing="false" onAction="#registerCourses" prefHeight="41.0" prefWidth="120.0" text="Υποβολη" />
+      <Button layoutX="133.0" layoutY="457.0" mnemonicParsing="false" onAction="#removeDoubleClick" prefHeight="41.0" prefWidth="120.0" text="Διαγραφή" />
+      <Label fx:id="success" alignment="CENTER" layoutX="479.0" layoutY="470.0" prefHeight="24.0" prefWidth="172.0" />
    </children>
 </AnchorPane>
