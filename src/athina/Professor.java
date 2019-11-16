@@ -24,6 +24,11 @@ public class Professor extends User{
     public void setCoursesTaught(Course[] coursesTaught) {
         this.coursesTaught = coursesTaught;
     }
+
+    @Override
+    public String toString() {
+        return "Professor{" + "coursesTaught=" + coursesTaught + '}';
+    }
     
     
 }

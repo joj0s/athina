@@ -37,7 +37,7 @@ public class Data {
         
         professors[0] = new Professor("kdiamant","123", "Kostas", "Diamantaras");
         professors[1] = new Professor("gtespas", "123","Giorgos", "Tespas");
-        professors[0] = new Professor("gkeis", "123","Giannis", "Keis");
+        professors[2] = new Professor("gkeis", "123","Giannis", "Keis");
         
         admins[0] = new Admin("mkalou", "123","Maria", "Kalou");
         

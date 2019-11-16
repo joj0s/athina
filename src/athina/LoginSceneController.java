@@ -5,13 +5,18 @@
  */
 package athina;
 
+import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Node;
+import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+import javafx.stage.Stage;
 
 /**
  * FXML Controller class
@@ -40,7 +45,7 @@ public class LoginSceneController implements Initializable {
         String username = usernameField.getText();
         String password = passwordField.getText();
         
-        if (username == null || password == null ){
+        if (username.isEmpty() || password.isEmpty() ){
             errorLabel.setText("Συμπληρώστε όλα τα πεδία");
             return;
         }
@@ -50,5 +55,55 @@ public class LoginSceneController implements Initializable {
     
     private void login(String username, String password, ActionEvent event){
         
+        System.out.println("PRESSED");
+        
+        for (Professor p : Data.professors){
+            if(p != null) {
+                if (p.getUsername().equals(username) && p.getPassword().equals(password)){
+                    Athina.user = p;
+                    goToMaster(event);
+                    return;
+                }
+            }
+        }
+        
+        for (Student s : Data.students){
+            if(s != null) {
+                if (s.getUsername().equals(username) && s.getPassword().equals(password)){
+                    Athina.user = s;
+                    goToMaster(event);
+                    return;
+                }
+            }
+        }
+        
+        for (Admin a : Data.admins){
+            if(a != null) {
+                if (a.getUsername().equals(username) && a.getPassword().equals(password)){
+                    Athina.user = a;
+                    goToMaster(event);
+                    return;
+                }
+            }   
+        }
+        
+        errorLabel.setText("Τα στοιχεία δεν είναι σωστά");
+        
+        
+    }
+    
+    private void goToMaster(ActionEvent event) {
+        try{
+            Scene loginScene = new Scene (FXMLLoader.load(getClass().getResource("MasterScene.fxml")));
+            Stage window = (Stage)((Node)event.getSource()).getScene().getWindow();
+            window.setScene(loginScene);
+            window.setResizable(false);
+            window.setTitle("Athina");
+            window.show();
+        }
+        catch(IOException e){
+            e.printStackTrace();
+        }
+            
     }
 }
