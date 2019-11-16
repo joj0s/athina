@@ -82,7 +82,23 @@ public class MasterSceneController implements Initializable {
         }
         catch(IOException e){
             e.printStackTrace();
-        }
-            
+        }    
     }
+    
+    
+    public void logoutButtonPressed(ActionEvent event) {
+        try{
+            Athina.user=null;
+            Scene loginScene = new Scene (FXMLLoader.load(getClass().getResource("LoginScene.fxml")));
+            Stage window = (Stage)((Node)event.getSource()).getScene().getWindow();
+            window.setScene(loginScene);
+            window.setResizable(false);
+            window.setTitle("Athina - Login");
+            window.show();
+        }
+        catch(IOException e){
+            e.printStackTrace();
+        }    
+    }
+    
 }
