@@ -27,5 +27,22 @@ public class Student extends User{
     public Course[] getPassedCourses() {
         return null;
     }
+
+    public int getCurrentSemester() {
+        return currentSemester;
+    }
+
+    public void setCurrentSemester(int currentSemester) {
+        this.currentSemester = currentSemester;
+    }
+
+    public Date getDateEnrolled() {
+        return dateEnrolled;
+    }
+
+    public void setDateEnrolled(Date dateEnrolled) {
+        this.dateEnrolled = dateEnrolled;
+    }
+    
     
 }
