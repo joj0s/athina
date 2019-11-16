@@ -7,20 +7,18 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-
-<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8" fx:controller="athina.RegisterUserSceneController">
+<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="athina.RegisterUserSceneController">
    <children>
-      <Button fx:id="backButton" layoutX="24.0" layoutY="20.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="91.0" text="Επιστροφή" />
+      <Button fx:id="backButton" layoutX="24.0" layoutY="20.0" mnemonicParsing="false" onAction="#backButtonPressed" prefHeight="25.0" prefWidth="91.0" text="Επιστροφή" />
       <Label alignment="CENTER" layoutX="189.0" layoutY="26.0" prefHeight="25.0" prefWidth="223.0" text="ΕΓΓΡΑΦΗ ΝΕΟΥ ΧΡΗΣΤΗ">
          <font>
             <Font size="17.0" />
          </font>
       </Label>
-      <TextField fx:id="usernameFIeld" layoutX="128.0" layoutY="113.0" />
-      <TextField fx:id="passwordField" layoutX="128.0" layoutY="175.0" />
+      <TextField fx:id="usernameField" layoutX="128.0" layoutY="113.0" />
       <TextField fx:id="fnameField" layoutX="405.0" layoutY="113.0" />
       <TextField fx:id="lnameField" layoutX="405.0" layoutY="175.0" />
-      <ComboBox fx:id="roleComboBox" layoutX="131.0" layoutY="244.0" prefWidth="150.0" />
+      <ComboBox fx:id="roleComboBox" layoutX="131.0" layoutY="244.0" prefWidth="150.0" promptText="User role" />
       <Button layoutX="405.0" layoutY="236.0" mnemonicParsing="false" onAction="#registerButtonPressed" prefHeight="35.0" prefWidth="117.0" text="ΕΓΓΡΑΦΗ" />
       <Label layoutX="319.0" layoutY="118.0" prefHeight="15.0" prefWidth="68.0" text="Ονομα" />
       <Label layoutX="319.0" layoutY="180.0" prefHeight="15.0" prefWidth="68.0" text="Επωνυμο" />
@@ -28,5 +26,6 @@
       <Label layoutX="47.0" layoutY="166.0" prefHeight="43.0" prefWidth="68.0" text="Κωδικος" />
       <Label layoutX="51.0" layoutY="249.0" prefHeight="15.0" prefWidth="68.0" text="Ρολος" />
       <Label fx:id="errorLabel" alignment="CENTER" layoutX="189.0" layoutY="348.0" prefHeight="15.0" prefWidth="260.0" />
+      <PasswordField fx:id="passwordField" layoutX="129.0" layoutY="175.0" />
    </children>
 </AnchorPane>

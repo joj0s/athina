@@ -53,7 +53,27 @@ public class Data {
         announcements[0] =  new Announcement(1, "Anakoinwsi Mathimatikwn", "Auto einai to swma ths anakoinvwshs mathimatikwn",
                 new Date(), professors[0], courses[0]);
         
- 
-        
     }
+    
+    public static void insertAdmin(Admin admin) {
+        for (int i=0; i<admins.length; i++){
+            if (admins[i] == null)
+                admins[i] = admin;
+        }
+    }
+    
+    public static void insertProfessor(Professor professor) {
+        for (int i=0; i<professors.length; i++){
+            if (professors[i] == null)
+                professors[i] = professor;
+        }
+    }
+    
+    public static void insertStudent(Student student) {
+        for (int i=0; i<students.length; i++) {
+            if (students[i] == null)
+                students[i] = student;
+        }
+    }
+    
 }
