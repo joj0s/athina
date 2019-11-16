@@ -22,6 +22,12 @@ public class CourseRegistration {
         this.registrationSemester = registrationSemester;
         this.grade = grade;
     }
+
+    public Course getCourse() {
+        return course;
+    }
+    
+    
     
     
 }
