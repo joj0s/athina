@@ -63,43 +63,51 @@ public class PostAnnouncementSceneController implements Initializable {
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        // TODO
 
         if (Athina.user instanceof Professor) {
-            searchProfessorCourses();
-            ObservableList<String> list = FXCollections.observableArrayList();
-            for (Course course : availableCourses) {
-                list.add(course.getName());
-            }
-            courseComboBox.setItems(list);
-            courseComboBox.setValue(list.get(0));
+            populateDropdown();
         } else {
             pane.getChildren().remove(courseComboBox);
             pane.getChildren().remove(courseLabel);
 
         }
     }
+    
+    private void populateDropdown(){
+         searchProfessorCourses();
+            ObservableList<String> list = FXCollections.observableArrayList();
+            for (Course course : availableCourses) {
+                list.add(course.getName());
+            }
+            courseComboBox.setItems(list);
+            courseComboBox.setValue(list.get(0));
+    }
 
     @FXML
     private void post(ActionEvent event) {
-        String title = titleTextField.getText();
-        String body = bodyTextArea.getText();
-
-        Data.announcementsCounter++;
-        String aboutCourse = courseComboBox.getValue();
-
-        if (title.isEmpty() || body.isEmpty()) {
-            statusLabel.setText("Συμπληρώστε όλα τα κενά πεδία.");
-        } else {
+        if (validateFields()) {
+            String title = titleTextField.getText();
+            String body = bodyTextArea.getText();
+            String aboutCourse = courseComboBox.getValue();
+            Data.announcementsCounter++;
             if (Athina.user instanceof Professor) {
                 Data.announcements[Data.announcementsCounter] = new Announcement(1, title, body, new Date(), Athina.user, findCourse(aboutCourse));
             } else {
                 Data.announcements[Data.announcementsCounter] = new Announcement(1, title, body, new Date(), Athina.user);
             }
-            statusLabel.setText("ΕΠΙΤΥΧΙΑ.");
         }
+    }
 
-
+    private boolean validateFields() {
+        String title = titleTextField.getText();
+        String body = bodyTextArea.getText();
+        if (title.isEmpty() || body.isEmpty()) {
+            statusLabel.setText("Συμπληρώστε όλα τα κενά πεδία.");
+            return false;
+        } else {
+            statusLabel.setText("ΕΠΙΤΥΧΙΑ.");
+            return true;
+        }
     }
 
     private void searchProfessorCourses() {
@@ -127,7 +135,7 @@ public class PostAnnouncementSceneController implements Initializable {
     }
 
     @FXML
-    public void goBack(ActionEvent event) {
+    private void goBack(ActionEvent event) {
         try {
             Scene announcementScene = new Scene(FXMLLoader.load(getClass().getResource("AnnouncementsScene.fxml")));
             Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();

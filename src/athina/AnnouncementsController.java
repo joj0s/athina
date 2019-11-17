@@ -79,22 +79,13 @@ public class AnnouncementsController implements Initializable {
         allRadio.setToggleGroup(toggleGroup);
         toggleGroup.selectToggle(allRadio);
 
-        if (Athina.user instanceof Student) {
-            pane.getChildren().remove(makeAnnouncementButton);
-        }
         if (Athina.user == null) {
-            pane.getChildren().remove(filterCombobox);
-            pane.getChildren().remove(makeAnnouncementButton);
-            pane.getChildren().remove(filterLabel);
-            pane.getChildren().remove(courseRadio);
-            pane.getChildren().remove(allRadio);
-            pane.getChildren().remove(semesterRadio);
-            pane.getChildren().remove(choiceLabel);
-            pane.getChildren().remove(radioLabel);
             showPublicOnly();
         } else {
             showDefaultAnnouncements();
         }
+
+        filterUIelements();
 
         titleColumn.setCellValueFactory(new PropertyValueFactory<FormattedAnnouncement, String>("title"));
         courseColumn.setCellValueFactory(new PropertyValueFactory<FormattedAnnouncement, String>("course"));
@@ -112,27 +103,47 @@ public class AnnouncementsController implements Initializable {
 
         for (Announcement announcement : announcements) {
             try {
-                String aboutCourse, semester;
-                try {
-                    aboutCourse = announcement.getAboutCourse().getName();
-                    semester = Integer.toString(announcement.getAboutCourse().getSemester());
-
-                } catch (Exception ex) {
-                    aboutCourse = "ΓΕΝΙΚΗ ΑΝΑΚΟΙΝΩΣΗ";
-                    semester = "ΟΛΑ";
-
-                }
-                String title = announcement.getTitle();
-                String date = announcement.getDatePublished().toString();
-                String body = announcement.getBody();
-
-                list.add(new FormattedAnnouncement(aboutCourse, semester, title, body, date));
+                String[] formattedAnnouncementData = getFormattedAnnouncementData(announcement);
+                FormattedAnnouncement formattedAnnouncement = new FormattedAnnouncement(formattedAnnouncementData[0],
+                        formattedAnnouncementData[1],
+                        formattedAnnouncementData[2],
+                        formattedAnnouncementData[3],
+                        formattedAnnouncementData[4]);
+                list.add(formattedAnnouncement);
             } catch (Exception ex) {
                 break;
 
             }
         }
         announcementTable.setItems(list);
+    }
+
+    private String[] getFormattedAnnouncementData(Announcement announcement) {
+        String[] data = new String[5];
+        try {
+            String aboutCourse, semester;
+            try {
+                aboutCourse = announcement.getAboutCourse().getName();
+                semester = Integer.toString(announcement.getAboutCourse().getSemester());
+
+            } catch (Exception ex) {
+                aboutCourse = "ΓΕΝΙΚΗ ΑΝΑΚΟΙΝΩΣΗ";
+                semester = "ΟΛΑ";
+
+            }
+            String title = announcement.getTitle();
+            String date = announcement.getDatePublished().toString();
+            String body = announcement.getBody();
+
+            data[0] = aboutCourse;
+            data[1] = semester;
+            data[2] = title;
+            data[3] = body;
+            data[4] = date;
+            return data;
+        } catch (Exception ex) {
+            return data;
+        }
     }
 
     public void fillFilter() {
@@ -145,10 +156,7 @@ public class AnnouncementsController implements Initializable {
                 if (Athina.user != null) {
                     showDefaultAnnouncements();
                 }
-                if (pane.getChildren().contains(filterCombobox)) {
-                    pane.getChildren().remove(filterCombobox);
-                    pane.getChildren().remove(choiceLabel);
-                }
+                updateUIfilters(false);
                 return;
             case "Μάθημα":
                 list.add("Όλα");
@@ -159,10 +167,7 @@ public class AnnouncementsController implements Initializable {
                         break;
                     }
                 }
-                if (!pane.getChildren().contains(filterCombobox)) {
-                    pane.getChildren().add(filterCombobox);
-                    pane.getChildren().add(choiceLabel);
-                }
+                updateUIfilters(true);
                 filterCombobox.setValue("Όλα");
                 filterCombobox.setItems(list);
                 break;
@@ -177,22 +182,46 @@ public class AnnouncementsController implements Initializable {
                         break;
                     }
                 }
-                if (!pane.getChildren().contains(filterCombobox)) {
-                    pane.getChildren().add(filterCombobox);
-                    pane.getChildren().add(choiceLabel);
-                }
-                    filterCombobox.setValue("Όλα");
-                    filterCombobox.setItems(list);
-                    break;
-                }
-                filterTable();
+                updateUIfilters(true);
+                filterCombobox.setValue("Όλα");
+                filterCombobox.setItems(list);
+                break;
+        }
+        filterTable();
+    }
+
+    private void filterUIelements() {
+        if (Athina.user instanceof Student) {
+            pane.getChildren().remove(makeAnnouncementButton);
+        }
+        if (Athina.user == null) {
+            pane.getChildren().remove(filterCombobox);
+            pane.getChildren().remove(makeAnnouncementButton);
+            pane.getChildren().remove(filterLabel);
+            pane.getChildren().remove(courseRadio);
+            pane.getChildren().remove(allRadio);
+            pane.getChildren().remove(semesterRadio);
+            pane.getChildren().remove(choiceLabel);
+            pane.getChildren().remove(radioLabel);
+            showPublicOnly();
+        }
+    }
+
+    private void updateUIfilters(boolean show) {
+        if (show) {
+            if (!pane.getChildren().contains(filterCombobox)) {
+                pane.getChildren().add(filterCombobox);
+                pane.getChildren().add(choiceLabel);
+            }
+        } else if (pane.getChildren().contains(filterCombobox)) {
+            pane.getChildren().remove(filterCombobox);
+            pane.getChildren().remove(choiceLabel);
         }
 
-    
+    }
 
     public void filterTable() {
-        if(Athina.user==null)
-        {
+        if (Athina.user == null) {
             showPublicOnly();
             return;
         }
@@ -209,21 +238,15 @@ public class AnnouncementsController implements Initializable {
             if (selectedButton.getText().equals("Μάθημα")) {
                 for (Announcement announcement : announcements) {
                     try {
-                        String semester, aboutCourse;
-                        try {
-                            aboutCourse = announcement.getAboutCourse().getName();
-                            semester = Integer.toString(announcement.getAboutCourse().getSemester());
-                        } catch (Exception ex) {
-                            aboutCourse = "ΓΕΝΙΚΗ ΑΝΑΚΟΙΝΩΣΗ";
-                            semester = "ΟΛΑ";
-                        }
-                        String title = announcement.getTitle();
-                        String date = announcement.getDatePublished().toString();
-                        String body = announcement.getBody();
-                        System.out.println(aboutCourse +" vs "+filterCombobox.getValue());
+                        String[] formattedAnnouncementData = getFormattedAnnouncementData(announcement);
+                        FormattedAnnouncement formattedAnnouncement = new FormattedAnnouncement(formattedAnnouncementData[0],
+                                formattedAnnouncementData[1],
+                                formattedAnnouncementData[2],
+                                formattedAnnouncementData[3],
+                                formattedAnnouncementData[4]);
 
-                        if (aboutCourse.equals(filterCombobox.getValue())) {
-                            list.add(new FormattedAnnouncement(aboutCourse, semester, title, body, date));
+                        if (formattedAnnouncementData[0].equals(filterCombobox.getValue())) {
+                            list.add(formattedAnnouncement);
                         }
                     } catch (Exception ex) {
                         break;
@@ -232,19 +255,15 @@ public class AnnouncementsController implements Initializable {
             } else {
                 for (Announcement announcement : announcements) {
                     try {
-                        String semester, aboutCourse;
-                        try {
-                            aboutCourse = announcement.getAboutCourse().getName();
-                            semester = Integer.toString(announcement.getAboutCourse().getSemester());
-                        } catch (Exception ex) {
-                            aboutCourse = "ΓΕΝΙΚΗ ΑΝΑΚΟΙΝΩΣΗ";
-                            semester = "ΟΛΑ";
-                        }
-                        String title = announcement.getTitle();
-                        String date = announcement.getDatePublished().toString();
-                        String body = announcement.getBody();
-                        if (semester.equals(filterCombobox.getValue())) {
-                            list.add(new FormattedAnnouncement(aboutCourse, semester, title, body, date));
+                        String[] formattedAnnouncementData = getFormattedAnnouncementData(announcement);
+                        FormattedAnnouncement formattedAnnouncement = new FormattedAnnouncement(formattedAnnouncementData[0],
+                                formattedAnnouncementData[1],
+                                formattedAnnouncementData[2],
+                                formattedAnnouncementData[3],
+                                formattedAnnouncementData[4]);
+
+                        if (formattedAnnouncementData[1].equals(filterCombobox.getValue())) {
+                            list.add(formattedAnnouncement);
                         }
                     } catch (Exception ex) {
                         break;
