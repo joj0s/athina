@@ -8,8 +8,8 @@
 
 <AnchorPane id="AnchorPane" fx:id="pane" prefHeight="562.0" prefWidth="931.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="athina.AnnouncementsController">
     <children>
-      <ComboBox fx:id="filterCombobox" layoutX="777.0" layoutY="71.0" onAction="#filterTable" prefWidth="80.0" />
-      <Label fx:id="filterLabel" layoutX="760.0" layoutY="41.0" text="Φίλτρο Εξαμήνου" />
+      <ComboBox fx:id="filterCombobox" layoutX="726.0" layoutY="71.0" onAction="#filterTable" prefHeight="25.0" prefWidth="181.0" />
+      <Label fx:id="filterLabel" layoutX="760.0" layoutY="41.0" text="Φίλτρο Μαθήματος" />
       <Button fx:id="makeAnnouncementButton" layoutX="753.0" layoutY="440.0" mnemonicParsing="false" onAction="#postAnnouncement" text="Νέα Ανακοίνωση" />
       <TableView fx:id="announcementTable" prefHeight="562.0" prefWidth="680.0">
         <columns>

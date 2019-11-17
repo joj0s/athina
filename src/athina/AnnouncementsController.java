@@ -143,7 +143,6 @@ public class AnnouncementsController implements Initializable {
                     String date = announcement.getDatePublished().toString();
                     String body = announcement.getBody();
 
-                    System.out.println(title);
                     if (aboutCourse == filterCombobox.getValue()) {
                         list.add(new FormattedAnnouncement(aboutCourse, title, body, date));
                     }

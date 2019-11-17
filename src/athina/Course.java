@@ -52,10 +52,10 @@ public class Course {
     public int getId() {
         return id;
     }
-
-    public String getName() {
-        return name;
-    }
+//
+//    public String getName() {
+//        return name;
+//    }
 
     public int getCredits() {
         return credits;
