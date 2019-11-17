@@ -27,11 +27,6 @@ public class Course {
         this.professor = professor;
     }
     
-    public String getName(){return name;}
-    public int getCredits(){return credits;}
-    public int getSemester(){return semester;}
-    public CourseRegistration[] getCurrentRegistrations() {
-        return null;
     
     public ArrayList<CourseRegistration> getCurrentRegistrations() {
         int i = 0;
