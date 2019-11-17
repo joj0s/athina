@@ -55,10 +55,7 @@ public class Data {
         announcements[0] =  new Announcement(1, "Anakoinwsi 1", "Auto einai to swma ths anakoinvwshs", new Date(), admins[0]);
         announcements[1] =  new Announcement(1, "Anakoinwsi Mathimatikwn", "Auto einai to swma ths anakoinvwshs mathimatikwn",
                 new Date(), professors[0], courses[0]);
-        
- 
-        professors[1].setCoursesTaught(new Course[]{courses[0],courses[1]});
-        
+                
     }
     
     public static void insertAdmin(Admin admin) {
