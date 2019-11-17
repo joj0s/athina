@@ -7,6 +7,7 @@ package athina;
 
 import java.io.IOException;
 import java.net.URL;
+import java.util.ArrayList;
 import java.util.ResourceBundle;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -55,7 +56,7 @@ public class PostAnnouncementSceneController implements Initializable {
     @FXML
     private AnchorPane pane;
 
-    private Course[] availableCourses;
+    private ArrayList<Course> availableCourses;
 
     /**
      * Initializes the controller class.
@@ -107,7 +108,7 @@ public class PostAnnouncementSceneController implements Initializable {
         for (Professor professor : Data.professors) {
             try {
                 if (professor.getUsername().equals(username)) {
-                    availableCourses = professor.getCoursesTaught();
+                    availableCourses = professor.getCoursesTaughtList();
                     return;
                 }
             } catch (Exception ex) {

@@ -51,6 +51,7 @@ public class CourseGradesSceneController implements Initializable {
        Student thisStudent = (Student)Athina.user;
        ArrayList<CourseRegistration> registrations = thisStudent.getRegistrations();
        gradesTable.setItems(formatRegistrations(registrations));
+       gradesTable.getSortOrder().add(gradesTableSemester);
     }    
     
     private ObservableList<FormattedCourseRegistration> formatRegistrations (ArrayList<CourseRegistration> registrations) {

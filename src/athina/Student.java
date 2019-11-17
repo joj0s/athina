@@ -25,9 +25,6 @@ public class Student extends User{
     }
 
     
-    public Course[] getPassedCourses() {
-        return null;
-    }
     
     public ArrayList<CourseRegistration> getRegistrations() {
         int i = 0;
@@ -39,6 +36,19 @@ public class Student extends User{
         }
         
         return currentRegistrations;
+    }
+    
+    public ArrayList<Course> getPassedCourses() {
+        int i = 0;
+        ArrayList<Course> passedCourses = new ArrayList<>();
+        ArrayList<CourseRegistration> currentRegistrations = this.getRegistrations();
+        
+        for(CourseRegistration c: currentRegistrations) {
+            if (c.getGrade() >= 5)
+                passedCourses.add(c.getCourse());
+        }
+        
+        return passedCourses;        
     }
 
     public int getCurrentSemester() {

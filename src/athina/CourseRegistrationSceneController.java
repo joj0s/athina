@@ -8,6 +8,7 @@ package athina;
 import java.awt.event.MouseEvent;
 import java.io.IOException;
 import java.net.URL;
+import java.util.ArrayList;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -79,16 +80,19 @@ public class CourseRegistrationSceneController implements Initializable {
     
     public void addAllCoursesToTable(){
         ObservableList<Course> courses = FXCollections.observableArrayList();
-        courses = fillCourses();
+        courses = getAvailableCourses();
         availableCoursesTable.setItems(courses);
     }
     
-    private ObservableList<Course> fillCourses(){
+    private ObservableList<Course> getAvailableCourses(){
         ObservableList<Course> courses = FXCollections.observableArrayList();
+        Student student = (Student)Athina.user;
+        ArrayList<Course> passedCourses = student.getPassedCourses();
         int i = 0;
         while(Data.courses[i] != null){
-            courses.add(Data.courses[i]);
-            i ++; 
+            if (!passedCourses.contains(Data.courses[i]))
+                courses.add(Data.courses[i]);
+            i++; 
         }
         return courses;
     }
@@ -111,10 +115,23 @@ public class CourseRegistrationSceneController implements Initializable {
         Student student = (Student) Athina.user;
         ObservableList<Course> selected = FXCollections.observableArrayList();
         selected = selectedCoursesTable.getItems();
-        for(int i=0;i<= Data.registrations.length-1;i++){
-            if(selected.isEmpty()){
+        
+        int currentCredits = 0;
+        
+        for (Course c: selected)
+            currentCredits += c.getCredits();
+        
+        if (currentCredits > 12) {
+            success.setText("Ξεπεράστηκε το όριο ΔΜ");
+            return;
+        } 
+        
+        
+        for(int i=0;i<= Data.registrations.length-1;i++) {
+            if (selected.isEmpty()) {
                 break;
-            }else{
+            }
+            else {
                 if(Data.registrations[i] == null){
                     Data.registrations[i] = new CourseRegistration(student,selected.get(0), "2018-19 XEIM");
                     selected.remove(0);      
@@ -128,7 +145,7 @@ public class CourseRegistrationSceneController implements Initializable {
                 c++;
             }
         }
-        System.out.println(c);
+        
         success.setText("Επιτυχημένη Δήλωση");
     }
 }

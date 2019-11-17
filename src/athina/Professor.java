@@ -5,6 +5,8 @@
  */
 package athina;
 
+import java.util.ArrayList;
+
 /**
  *
  * @author jojos
@@ -17,8 +19,17 @@ public class Professor extends User{
         super(username, password, firstName, lastName);
     }
 
-    public Course[] getCoursesTaught() {
-        return coursesTaught;
+    public ArrayList<Course> getCoursesTaughtList() {
+       int i=0;
+       ArrayList<Course> courses = new ArrayList<>();
+       
+       while(Data.courses[i] != null){
+            if (Data.courses[i].getProfessor().equals(this))
+                courses.add(Data.courses[i]);
+            i++;
+        }
+       
+       return courses;
     }
 
     public void setCoursesTaught(Course[] coursesTaught) {
