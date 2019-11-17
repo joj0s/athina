@@ -111,10 +111,23 @@ public class CourseRegistrationSceneController implements Initializable {
         Student student = (Student) Athina.user;
         ObservableList<Course> selected = FXCollections.observableArrayList();
         selected = selectedCoursesTable.getItems();
-        for(int i=0;i<= Data.registrations.length-1;i++){
-            if(selected.isEmpty()){
+        
+        int currentCredits = 0;
+        
+        for (Course c: selected)
+            currentCredits += c.getCredits();
+        
+        if (currentCredits > 12) {
+            success.setText("Ξεπεράστηκε το όριο ΔΜ");
+            return;
+        } 
+        
+        
+        for(int i=0;i<= Data.registrations.length-1;i++) {
+            if (selected.isEmpty()) {
                 break;
-            }else{
+            }
+            else {
                 if(Data.registrations[i] == null){
                     Data.registrations[i] = new CourseRegistration(student,selected.get(0), "2018-19 XEIM");
                     selected.remove(0);      
@@ -128,7 +141,7 @@ public class CourseRegistrationSceneController implements Initializable {
                 c++;
             }
         }
-        System.out.println(c);
+        
         success.setText("Επιτυχημένη Δήλωση");
     }
 }
