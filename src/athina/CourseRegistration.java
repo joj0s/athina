@@ -32,10 +32,5 @@ public class CourseRegistration {
 
     public float getGrade() {
         return grade;
-    }
-    
-    
-    
-    
-    
+    }    
 }

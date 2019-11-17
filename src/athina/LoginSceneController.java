@@ -55,8 +55,6 @@ public class LoginSceneController implements Initializable {
     
     private void login(String username, String password, ActionEvent event){
         
-        System.out.println("PRESSED");
-        
         for (Professor p : Data.professors){
             if(p != null) {
                 if (p.getUsername().equals(username) && p.getPassword().equals(password)){
@@ -106,4 +104,6 @@ public class LoginSceneController implements Initializable {
         }
             
     }
+    
+    
 }

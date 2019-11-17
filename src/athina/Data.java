@@ -20,6 +20,7 @@ public class Data {
     public static Course[] courses;
     public static CourseRegistration[] registrations;
     public static Announcement[] announcements;
+    public static int announcementsCounter;
     
     public Data() {
         students = new Student[50];
@@ -28,6 +29,7 @@ public class Data {
         courses = new Course[30];
         registrations = new CourseRegistration[50];
         announcements = new Announcement[50];
+        announcementsCounter=1;
     }
     
     public void initializeData() {
@@ -39,21 +41,24 @@ public class Data {
         professors[1] = new Professor("gtespas", "123","Giorgos", "Tespas");
         professors[2] = new Professor("gkeis", "123","Giannis", "Keis");
         
+        
         admins[0] = new Admin("mkalou", "123","Maria", "Kalou");
         
         courses[0] = new Course(1, "Mathimatika 1", 6, 1, professors[2]);
         courses[1] = new Course(2, "Arxitektonikh HY", 6, 3, professors[0]);
         courses[2] = new Course(3, "Programmatismos", 4, 1, professors[1]);
+
         
         registrations[0] = new CourseRegistration(students[0], courses[0], "2018-19 XEIM");
         registrations[1] = new CourseRegistration(students[1], courses[1], "2018-19 XEIM");
         registrations[2] = new CourseRegistration(students[2], courses[2], "2018-19 XEIM");
         
         announcements[0] =  new Announcement(1, "Anakoinwsi 1", "Auto einai to swma ths anakoinvwshs", new Date(), admins[0]);
-        announcements[0] =  new Announcement(1, "Anakoinwsi Mathimatikwn", "Auto einai to swma ths anakoinvwshs mathimatikwn",
+        announcements[1] =  new Announcement(1, "Anakoinwsi Mathimatikwn", "Auto einai to swma ths anakoinvwshs mathimatikwn",
                 new Date(), professors[0], courses[0]);
         
  
+        professors[1].setCoursesTaught(new Course[]{courses[0],courses[1]});
         
     }
 }

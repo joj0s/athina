@@ -6,18 +6,20 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane id="AnchorPane" prefHeight="562.0" prefWidth="931.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="athina.FXMLDocumentController">
+<AnchorPane id="AnchorPane" fx:id="pane" prefHeight="562.0" prefWidth="931.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="athina.AnnouncementsController">
     <children>
-      <ComboBox layoutX="777.0" layoutY="71.0" prefWidth="80.0" />
-      <Label layoutX="760.0" layoutY="41.0" text="Φίλτρο Εξαμήνου" />
-      <Button layoutX="753.0" layoutY="440.0" mnemonicParsing="false" text="Νέα Ανακοίνωση" />
-      <TableView prefHeight="562.0" prefWidth="680.0">
+      <ComboBox fx:id="filterCombobox" layoutX="777.0" layoutY="71.0" onAction="#filterTable" prefWidth="80.0" />
+      <Label fx:id="filterLabel" layoutX="760.0" layoutY="41.0" text="Φίλτρο Εξαμήνου" />
+      <Button fx:id="makeAnnouncementButton" layoutX="753.0" layoutY="440.0" mnemonicParsing="false" onAction="#postAnnouncement" text="Νέα Ανακοίνωση" />
+      <TableView fx:id="announcementTable" prefHeight="562.0" prefWidth="680.0">
         <columns>
-          <TableColumn prefWidth="450.0" style="background-color: #32936f;" text="Τίτλος Ανακοίνωσης" />
-          <TableColumn minWidth="0.0" prefWidth="90.0" text="Εξάμηνο" />
-            <TableColumn minWidth="0.0" prefWidth="141.0" text="Ημερομηνία" />
+          <TableColumn fx:id="titleColumn" prefWidth="450.0" style="background-color: #32936f;" text="Τίτλος Ανακοίνωσης" />
+          <TableColumn fx:id="courseColumn" minWidth="0.0" prefWidth="90.0" text="Εξάμηνο" />
+            <TableColumn fx:id="dateColumn" minWidth="0.0" prefWidth="141.0" text="Ημερομηνία" />
         </columns>
       </TableView>
-      <ScrollBar layoutX="672.0" orientation="VERTICAL" prefHeight="562.0" prefWidth="17.0" />
+      <ScrollBar fx:id="announcementsScrollbar" layoutX="672.0" orientation="VERTICAL" prefHeight="562.0" prefWidth="17.0" />
+      <Button fx:id="showButton" layoutX="775.0" layoutY="152.0" mnemonicParsing="false" onAction="#showAnnouncement" text="ΠΡΟΒΟΛΗ" textAlignment="CENTER" />
+      <Button fx:id="gobackButton" layoutX="765.0" layoutY="515.0" mnemonicParsing="false" onAction="#goBack" text="&lt; Επιστροφή" textAlignment="CENTER" />
     </children>
 </AnchorPane>

@@ -28,5 +28,27 @@ public class Course {
     public CourseRegistration[] getCurrentRegistrations() {
         return null;
     }
+
+    public int getId() {
+        return id;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public int getCredits() {
+        return credits;
+    }
+
+    public int getSemester() {
+        return semester;
+    }
+
+    public Professor getProfessor() {
+        return professor;
+    }
+    
+    
     
 }
