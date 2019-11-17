@@ -8,10 +8,7 @@
   </information>
   <resources>
     <j2se version="1.6+" href="http://java.sun.com/products/autodl/j2se"/>
-    <jar href="Athina.jar" size="9863" download="eager" />
-    <jar href="lib/mysql-connector-java-5.1.48.jar" size="1006956" download="eager" />
-    <jar href="lib/mysql-connector-java-8.0.18.jar" size="2330539" download="eager" />
-    <jar href="lib/ojdbc7.jar" size="3397734" download="eager" />
+    <jar href="Athina.jar" size="44212" download="eager" />
   </resources>
   <applet-desc  width="800" height="600" main-class="com.javafx.main.NoJavaFXFallback"  name="Athina" >
     <param name="requiredFXVersion" value="8.0+"/>

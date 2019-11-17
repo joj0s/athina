@@ -6,20 +6,24 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane id="AnchorPane" fx:id="pane" prefHeight="562.0" prefWidth="931.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="athina.AnnouncementsController">
+<AnchorPane id="AnchorPane" fx:id="pane" prefHeight="653.0" prefWidth="1113.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="athina.AnnouncementsController">
     <children>
-      <ComboBox fx:id="filterCombobox" layoutX="726.0" layoutY="71.0" onAction="#filterTable" prefHeight="25.0" prefWidth="181.0" />
-      <Label fx:id="filterLabel" layoutX="760.0" layoutY="41.0" text="Φίλτρο Μαθήματος" />
-      <Button fx:id="makeAnnouncementButton" layoutX="753.0" layoutY="440.0" mnemonicParsing="false" onAction="#postAnnouncement" text="Νέα Ανακοίνωση" />
-      <TableView fx:id="announcementTable" prefHeight="562.0" prefWidth="680.0">
+      <ComboBox fx:id="filterCombobox" layoutX="877.0" layoutY="237.0" onAction="#filterTable" prefHeight="25.0" prefWidth="181.0" />
+      <Button fx:id="makeAnnouncementButton" layoutX="904.0" layoutY="443.0" mnemonicParsing="false" onAction="#postAnnouncement" text="Νέα Ανακοίνωση" />
+      <TableView fx:id="announcementTable" prefHeight="653.0" prefWidth="803.0">
         <columns>
           <TableColumn fx:id="titleColumn" prefWidth="450.0" style="background-color: #32936f;" text="Τίτλος Ανακοίνωσης" />
-          <TableColumn fx:id="courseColumn" minWidth="0.0" prefWidth="90.0" text="Εξάμηνο" />
-            <TableColumn fx:id="dateColumn" minWidth="0.0" prefWidth="141.0" text="Ημερομηνία" />
+          <TableColumn fx:id="semesterColumn" minWidth="0.0" prefWidth="90.0" text="Εξάμηνο" />
+            <TableColumn fx:id="courseColumn" minWidth="0.0" prefWidth="102.0" text="Μάθημα" />
+            <TableColumn fx:id="dateColumn" minWidth="0.0" prefWidth="180.0" text="Ημερομηνία" />
         </columns>
       </TableView>
-      <ScrollBar fx:id="announcementsScrollbar" layoutX="672.0" orientation="VERTICAL" prefHeight="562.0" prefWidth="17.0" />
-      <Button fx:id="showButton" layoutX="775.0" layoutY="152.0" mnemonicParsing="false" onAction="#showAnnouncement" text="ΠΡΟΒΟΛΗ" textAlignment="CENTER" />
-      <Button fx:id="gobackButton" layoutX="765.0" layoutY="515.0" mnemonicParsing="false" onAction="#goBack" text="&lt; Επιστροφή" textAlignment="CENTER" />
+      <Button fx:id="showButton" layoutX="926.0" layoutY="380.0" mnemonicParsing="false" onAction="#showAnnouncement" text="ΠΡΟΒΟΛΗ" textAlignment="CENTER" />
+      <Button fx:id="gobackButton" layoutX="916.0" layoutY="518.0" mnemonicParsing="false" onAction="#goBack" text="&lt; Επιστροφή" textAlignment="CENTER" />
+      <RadioButton fx:id="courseRadio" layoutX="904.0" layoutY="138.0" mnemonicParsing="false" onAction="#fillFilter" text="Μάθημα" />
+      <RadioButton fx:id="semesterRadio" layoutX="904.0" layoutY="105.0" mnemonicParsing="false" onAction="#fillFilter" text="Εξάμηνο" />
+      <Label fx:id="radioLabel" layoutX="921.0" layoutY="39.0" text="Φίλτρο με" underline="true" />
+      <Label fx:id="choiceLabel" layoutX="935.0" layoutY="200.0" text="Επιλογές" underline="true" />
+      <RadioButton fx:id="allRadio" layoutX="904.0" layoutY="74.0" mnemonicParsing="false" onAction="#fillFilter" text="Χωρίς" />
     </children>
 </AnchorPane>
