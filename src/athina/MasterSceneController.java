@@ -70,7 +70,7 @@ public class MasterSceneController implements Initializable {
     }    
     
     
-    public void loginButtonPressed(ActionEvent event) {
+        public void loginButtonPressed(ActionEvent event) {
         try{
             Scene loginScene = new Scene (FXMLLoader.load(getClass().getResource("LoginScene.fxml")));
             Athina.user=null;
@@ -94,6 +94,20 @@ public class MasterSceneController implements Initializable {
             window.setScene(loginScene);
             window.setResizable(false);
             window.setTitle("Athina - Login");
+            window.show();
+        }
+        catch(IOException e){
+            e.printStackTrace();
+        }    
+    }
+
+    public void announcementsButtonPressed(ActionEvent event) {
+        try{
+            Scene announcementsScene = new Scene (FXMLLoader.load(getClass().getResource("AnnouncementsScene.fxml")));
+            Stage window = (Stage)((Node)event.getSource()).getScene().getWindow();
+            window.setScene(announcementsScene);
+            window.setResizable(false);
+            window.setTitle("Announcements");
             window.show();
         }
         catch(IOException e){

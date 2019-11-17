@@ -12,7 +12,7 @@ import java.util.Date;
  * @author jojos
  */
 public class Announcement {
-    
+
     private int id;
     private String title;
     private String body;
@@ -39,10 +39,33 @@ public class Announcement {
         this.aboutCourse = aboutCourse;
         isPublic = false;
     }
-    
-    
-    
-    
-    
-    
+
+    public int getId() {
+        return id;
+    }
+
+    public String getTitle() {
+        return title;
+    }
+
+    public String getBody() {
+        return body;
+    }
+
+    public Date getDatePublished() {
+        return datePublished;
+    }
+
+    public User getAuthor() {
+        return author;
+    }
+
+    public Course getAboutCourse() {
+        return aboutCourse;
+    }
+
+    public boolean isIsPublic() {
+        return isPublic;
+    }
+
 }

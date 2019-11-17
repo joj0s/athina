@@ -54,10 +54,25 @@ public class Course {
         return name;
     }
 
+    public int getId() {
+        return id;
+    }
+//
+//    public String getName() {
+//        return name;
+//    }
+
+    public int getCredits() {
+        return credits;
+    }
+
     public int getSemester() {
         return semester;
     }
-    
+
+    public Professor getProfessor() {
+        return professor;
+    }
     
     
     
