@@ -15,16 +15,21 @@ public class FormattedAnnouncement {
     private String title;
     private String date;
     private String body;
+    private String semester;
 
-    public FormattedAnnouncement(String course, String title,String body, String date) {
+    public FormattedAnnouncement(String course,String semester, String title,String body, String date) {
         this.course = course;
         this.title = title;
+        this.semester = semester;
         this.date = date;
         this.body = body;
     }
 
     public String getCourse() {
         return course;
+    }
+    public String getSemester() {
+        return semester;
     }
 
     public String getTitle() {

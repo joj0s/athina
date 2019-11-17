@@ -14,7 +14,6 @@ import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TableColumn;
-import javafx.scene.control.ScrollBar;
 import javafx.fxml.Initializable;
 import javafx.scene.layout.AnchorPane;
 import javafx.collections.FXCollections;
@@ -23,6 +22,8 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Scene;
+import javafx.scene.control.RadioButton;
+import javafx.scene.control.ToggleGroup;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
 
@@ -36,11 +37,21 @@ public class AnnouncementsController implements Initializable {
     @FXML
     private Label filterLabel;
     @FXML
+    private Label radioLabel;
+    @FXML
+    private Label choiceLabel;
+    @FXML
     private ComboBox<String> filterCombobox;
     @FXML
     private Button makeAnnouncementButton;
     @FXML
     private Button showAnnouncement;
+    @FXML
+    private RadioButton semesterRadio;
+    @FXML
+    private RadioButton allRadio;
+    @FXML
+    private RadioButton courseRadio;
     @FXML
     private TableView announcementTable;
     @FXML
@@ -50,17 +61,23 @@ public class AnnouncementsController implements Initializable {
     @FXML
     private TableColumn<FormattedAnnouncement, String> dateColumn;
     @FXML
-    private ScrollBar announcementsScrollbar;
+    private TableColumn<FormattedAnnouncement, String> semesterColumn;
     @FXML
     private AnchorPane pane;
 
     public static FormattedAnnouncement selectedAnnouncement;
+    private ToggleGroup toggleGroup = new ToggleGroup();
 
     /**
      * Initializes the controller class.
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
+
+        semesterRadio.setToggleGroup(toggleGroup);
+        courseRadio.setToggleGroup(toggleGroup);
+        allRadio.setToggleGroup(toggleGroup);
+        toggleGroup.selectToggle(allRadio);
 
         if (Athina.user instanceof Student) {
             pane.getChildren().remove(makeAnnouncementButton);
@@ -69,6 +86,11 @@ public class AnnouncementsController implements Initializable {
             pane.getChildren().remove(filterCombobox);
             pane.getChildren().remove(makeAnnouncementButton);
             pane.getChildren().remove(filterLabel);
+            pane.getChildren().remove(courseRadio);
+            pane.getChildren().remove(allRadio);
+            pane.getChildren().remove(semesterRadio);
+            pane.getChildren().remove(choiceLabel);
+            pane.getChildren().remove(radioLabel);
             showPublicOnly();
         } else {
             showDefaultAnnouncements();
@@ -77,8 +99,10 @@ public class AnnouncementsController implements Initializable {
         titleColumn.setCellValueFactory(new PropertyValueFactory<FormattedAnnouncement, String>("title"));
         courseColumn.setCellValueFactory(new PropertyValueFactory<FormattedAnnouncement, String>("course"));
         dateColumn.setCellValueFactory(new PropertyValueFactory<FormattedAnnouncement, String>("date"));
+        semesterColumn.setCellValueFactory(new PropertyValueFactory<FormattedAnnouncement, String>("semester"));
+
         //add your data to the table here.
-        fillFilter(Data.courses);
+        fillFilter();
     }
 
     private void showDefaultAnnouncements() {
@@ -88,17 +112,21 @@ public class AnnouncementsController implements Initializable {
 
         for (Announcement announcement : announcements) {
             try {
-                String aboutCourse;
+                String aboutCourse, semester;
                 try {
                     aboutCourse = announcement.getAboutCourse().getName();
+                    semester = Integer.toString(announcement.getAboutCourse().getSemester());
+
                 } catch (Exception ex) {
                     aboutCourse = "ΓΕΝΙΚΗ ΑΝΑΚΟΙΝΩΣΗ";
+                    semester = "ΟΛΑ";
+
                 }
                 String title = announcement.getTitle();
                 String date = announcement.getDatePublished().toString();
                 String body = announcement.getBody();
 
-                list.add(new FormattedAnnouncement(aboutCourse, title, body, date));
+                list.add(new FormattedAnnouncement(aboutCourse, semester, title, body, date));
             } catch (Exception ex) {
                 break;
 
@@ -107,22 +135,67 @@ public class AnnouncementsController implements Initializable {
         announcementTable.setItems(list);
     }
 
-    private void fillFilter(Course[] courses) {
+    public void fillFilter() {
+
+        Course[] courses = Data.courses;
         ObservableList<String> list = FXCollections.observableArrayList();
-        list.add("Όλα");
-        for (Course course : courses) {
-            try {
-                list.add(course.getName());
-            } catch (Exception ex) {
+        RadioButton selectedButton = (RadioButton) toggleGroup.getSelectedToggle();
+        switch (selectedButton.getText()) {
+            case "Χωρίς":
+                if (Athina.user != null) {
+                    showDefaultAnnouncements();
+                }
+                if (pane.getChildren().contains(filterCombobox)) {
+                    pane.getChildren().remove(filterCombobox);
+                    pane.getChildren().remove(choiceLabel);
+                }
+                return;
+            case "Μάθημα":
+                list.add("Όλα");
+                for (Course course : courses) {
+                    try {
+                        list.add(course.getName());
+                    } catch (Exception ex) {
+                        break;
+                    }
+                }
+                if (!pane.getChildren().contains(filterCombobox)) {
+                    pane.getChildren().add(filterCombobox);
+                    pane.getChildren().add(choiceLabel);
+                }
+                filterCombobox.setValue("Όλα");
+                filterCombobox.setItems(list);
                 break;
-            }
+            case "Εξάμηνο":
+                list.add("Όλα");
+                for (Course course : courses) {
+                    try {
+                        if (!list.contains(Integer.toString(course.getSemester()))) {
+                            list.add(Integer.toString(course.getSemester()));
+                        }
+                    } catch (Exception ex) {
+                        break;
+                    }
+                }
+                if (!pane.getChildren().contains(filterCombobox)) {
+                    pane.getChildren().add(filterCombobox);
+                    pane.getChildren().add(choiceLabel);
+                }
+                    filterCombobox.setValue("Όλα");
+                    filterCombobox.setItems(list);
+                    break;
+                }
+                filterTable();
         }
 
-        filterCombobox.setValue("Όλα");
-        filterCombobox.setItems(list);
-    }
+    
 
     public void filterTable() {
+        if(Athina.user==null)
+        {
+            showPublicOnly();
+            return;
+        }
         String comboboxValue = filterCombobox.getValue();
         Announcement[] announcements = Data.announcements;
         ObservableList<FormattedAnnouncement> list = FXCollections.observableArrayList();
@@ -131,23 +204,51 @@ public class AnnouncementsController implements Initializable {
             showDefaultAnnouncements();
             return;
         } else {
-            for (Announcement announcement : announcements) {
-                try {
-                    String aboutCourse;
-                    try {
-                        aboutCourse = announcement.getAboutCourse().getName();
-                    } catch (Exception ex) {
-                        aboutCourse = "ΓΕΝΙΚΗ ΑΝΑΚΟΙΝΩΣΗ";
-                    }
-                    String title = announcement.getTitle();
-                    String date = announcement.getDatePublished().toString();
-                    String body = announcement.getBody();
+            RadioButton selectedButton = (RadioButton) toggleGroup.getSelectedToggle();
 
-                    if (aboutCourse == filterCombobox.getValue()) {
-                        list.add(new FormattedAnnouncement(aboutCourse, title, body, date));
+            if (selectedButton.getText().equals("Μάθημα")) {
+                for (Announcement announcement : announcements) {
+                    try {
+                        String semester, aboutCourse;
+                        try {
+                            aboutCourse = announcement.getAboutCourse().getName();
+                            semester = Integer.toString(announcement.getAboutCourse().getSemester());
+                        } catch (Exception ex) {
+                            aboutCourse = "ΓΕΝΙΚΗ ΑΝΑΚΟΙΝΩΣΗ";
+                            semester = "ΟΛΑ";
+                        }
+                        String title = announcement.getTitle();
+                        String date = announcement.getDatePublished().toString();
+                        String body = announcement.getBody();
+                        System.out.println(aboutCourse +" vs "+filterCombobox.getValue());
+
+                        if (aboutCourse.equals(filterCombobox.getValue())) {
+                            list.add(new FormattedAnnouncement(aboutCourse, semester, title, body, date));
+                        }
+                    } catch (Exception ex) {
+                        break;
                     }
-                } catch (Exception ex) {
-                    break;
+                }
+            } else {
+                for (Announcement announcement : announcements) {
+                    try {
+                        String semester, aboutCourse;
+                        try {
+                            aboutCourse = announcement.getAboutCourse().getName();
+                            semester = Integer.toString(announcement.getAboutCourse().getSemester());
+                        } catch (Exception ex) {
+                            aboutCourse = "ΓΕΝΙΚΗ ΑΝΑΚΟΙΝΩΣΗ";
+                            semester = "ΟΛΑ";
+                        }
+                        String title = announcement.getTitle();
+                        String date = announcement.getDatePublished().toString();
+                        String body = announcement.getBody();
+                        if (semester.equals(filterCombobox.getValue())) {
+                            list.add(new FormattedAnnouncement(aboutCourse, semester, title, body, date));
+                        }
+                    } catch (Exception ex) {
+                        break;
+                    }
                 }
             }
         }
@@ -159,13 +260,14 @@ public class AnnouncementsController implements Initializable {
         Announcement[] announcements = Data.announcements;
         for (Announcement announcement : announcements) {
             try {
-                String aboutCourse;
+                String aboutCourse, semester;
                 if (announcement.getAboutCourse() == null) {
                     aboutCourse = "ΓΕΝΙΚΗ ΑΝΑΚΟΙΝΩΣΗ";
+                    semester = "ΟΛΑ";
                     String title = announcement.getTitle();
                     String date = announcement.getDatePublished().toString();
                     String body = announcement.getBody();
-                    list.add(new FormattedAnnouncement(aboutCourse, title, body, date));
+                    list.add(new FormattedAnnouncement(aboutCourse, semester, title, body, date));
                 }
             } catch (Exception ex) {
                 break;
@@ -211,8 +313,8 @@ public class AnnouncementsController implements Initializable {
         try {
             Scene goBackScene;
             Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
-                goBackScene = new Scene(FXMLLoader.load(getClass().getResource("MasterScene.fxml")));
-                window.setTitle("Athina - Login");
+            goBackScene = new Scene(FXMLLoader.load(getClass().getResource("MasterScene.fxml")));
+            window.setTitle("Athina");
 
             window.setScene(goBackScene);
             window.setResizable(false);
