@@ -18,6 +18,6 @@
             <Font size="23.0" />
          </font>
       </Label>
-      <Button fx:id="registerButton" layoutX="232.0" layoutY="79.0" mnemonicParsing="false" prefHeight="45.0" prefWidth="137.0" text="Εγγραφη χρηστη" />
+      <Button fx:id="registerButton" layoutX="232.0" layoutY="79.0" mnemonicParsing="false" onAction="#registerButtonPressed" prefHeight="45.0" prefWidth="137.0" text="Εγγραφη χρηστη" />
    </children>
 </AnchorPane>

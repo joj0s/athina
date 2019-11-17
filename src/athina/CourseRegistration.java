@@ -22,6 +22,14 @@ public class CourseRegistration {
         this.registrationSemester = registrationSemester;
     }
 
+    public Student getStudent() {
+        return student;
+    }
+
+    public void setStudent(Student student) {
+        this.student = student;
+    }
+
     public Course getCourse() {
         return course;
     }
@@ -32,5 +40,14 @@ public class CourseRegistration {
 
     public float getGrade() {
         return grade;
-    }    
+    }
+
+    @Override
+    public String toString() {
+        return "CourseRegistration{" + "student=" + student + ", course=" + course + ", registrationSemester=" + registrationSemester + ", grade=" + grade + '}';
+    }
+    
+    
+    
+    
 }

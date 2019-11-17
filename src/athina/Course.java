@@ -5,6 +5,8 @@
  */
 package athina;
 
+import java.util.ArrayList;
+
 /**
  *
  * @author jojos
@@ -25,8 +27,26 @@ public class Course {
         this.professor = professor;
     }
     
-    public CourseRegistration[] getCurrentRegistrations() {
-        return null;
+    
+    public ArrayList<CourseRegistration> getCurrentRegistrations() {
+        int i = 0;
+        ArrayList<CourseRegistration> registrations = new ArrayList<>();
+        
+        while(Data.registrations[i] != null){
+            if (Data.registrations[i].getCourse() == this){
+                registrations.add(Data.registrations[i]);
+            }
+                
+            i++;
+        }
+        
+        return registrations;
+    }
+    
+    
+
+    public String getName() {
+        return name;
     }
 
     public int getId() {

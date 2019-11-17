@@ -44,10 +44,9 @@ public class Data {
         
         admins[0] = new Admin("mkalou", "123","Maria", "Kalou");
         
-        courses[0] = new Course(1, "Mathimatika 1", 6, 1, professors[2]);
-        courses[1] = new Course(2, "Arxitektonikh HY", 6, 3, professors[0]);
-        courses[2] = new Course(3, "Programmatismos", 4, 1, professors[1]);
-
+        courses[0] = new Course(1, "Μαθηματικά 1", 6, 1, professors[2]);
+        courses[1] = new Course(2, "Αρχιτεκτονική HY", 6, 3, professors[0]);
+        courses[2] = new Course(3, "Προγραμματισμός 1", 4, 1, professors[1]);
         
         registrations[0] = new CourseRegistration(students[0], courses[0], "2018-19 XEIM");
         registrations[1] = new CourseRegistration(students[1], courses[1], "2018-19 XEIM");
@@ -61,4 +60,26 @@ public class Data {
         professors[1].setCoursesTaught(new Course[]{courses[0],courses[1]});
         
     }
+    
+    public static void insertAdmin(Admin admin) {
+        for (int i=0; i<admins.length; i++){
+            if (admins[i] == null)
+                admins[i] = admin;
+        }
+    }
+    
+    public static void insertProfessor(Professor professor) {
+        for (int i=0; i<professors.length; i++){
+            if (professors[i] == null)
+                professors[i] = professor;
+        }
+    }
+    
+    public static void insertStudent(Student student) {
+        for (int i=0; i<students.length; i++) {
+            if (students[i] == null)
+                students[i] = student;
+        }
+    }
+    
 }
