@@ -8,6 +8,7 @@ package athina;
 import java.awt.event.MouseEvent;
 import java.io.IOException;
 import java.net.URL;
+import java.util.ArrayList;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -79,16 +80,19 @@ public class CourseRegistrationSceneController implements Initializable {
     
     public void addAllCoursesToTable(){
         ObservableList<Course> courses = FXCollections.observableArrayList();
-        courses = fillCourses();
+        courses = getAvailableCourses();
         availableCoursesTable.setItems(courses);
     }
     
-    private ObservableList<Course> fillCourses(){
+    private ObservableList<Course> getAvailableCourses(){
         ObservableList<Course> courses = FXCollections.observableArrayList();
+        Student student = (Student)Athina.user;
+        ArrayList<Course> passedCourses = student.getPassedCourses();
         int i = 0;
         while(Data.courses[i] != null){
-            courses.add(Data.courses[i]);
-            i ++; 
+            if (!passedCourses.contains(Data.courses[i]))
+                courses.add(Data.courses[i]);
+            i++; 
         }
         return courses;
     }
