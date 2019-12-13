@@ -3,7 +3,10 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package athina;
+package athina.models;
+
+import athina.models.Student;
+import athina.models.Course;
 
 /**
  *

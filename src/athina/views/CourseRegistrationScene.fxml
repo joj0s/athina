@@ -7,7 +7,7 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane id="AnchorPane" prefHeight="548.0" prefWidth="759.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="athina.CourseRegistrationSceneController">
+<AnchorPane id="AnchorPane" prefHeight="548.0" prefWidth="759.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="athina.controllers.CourseRegistrationSceneController">
    <children>
       <Button layoutX="23.0" layoutY="14.0" mnemonicParsing="false" onAction="#backButtonPressed" prefHeight="30.0" prefWidth="90.0" text="Επιστροφή" />
       <Label alignment="CENTER" layoutX="275.0" layoutY="14.0" prefHeight="30.0" prefWidth="210.0" text="ΕΓΓΡΑΦΗ ΜΑΘΗΜΑΤΩΝ">

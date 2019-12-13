@@ -7,7 +7,7 @@
 <?import javafx.scene.layout.*?>
 
 
-<AnchorPane id="AnchorPane" prefHeight="203.0" prefWidth="303.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8" fx:controller="athina.EditGradeSceneController">
+<AnchorPane id="AnchorPane" prefHeight="203.0" prefWidth="303.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8" fx:controller="athina.controllers.EditGradeSceneController">
    <children>
       <Button layoutX="50.0" layoutY="119.0" mnemonicParsing="false" onAction="#backButtonPressed" text="Επιστροφή" />
       <Button layoutX="152.0" layoutY="119.0" mnemonicParsing="false" onAction="#submitButtonPressed" prefHeight="25.0" prefWidth="96.0" text="Υποβολή" />

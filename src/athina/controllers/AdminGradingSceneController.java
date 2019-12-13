@@ -3,8 +3,13 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package athina;
+package athina.controllers;
 
+import athina.models.Course;
+import athina.models.CourseRegistration;
+import athina.Data;
+import athina.models.FormattedCourseRegistration;
+import athina.models.Student;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
@@ -95,7 +100,7 @@ public class AdminGradingSceneController implements Initializable {
     
     public void backButtonPressed(ActionEvent event) {
         try{
-            Scene loginScene = new Scene (FXMLLoader.load(getClass().getResource("MasterScene.fxml")));
+            Scene loginScene = new Scene (FXMLLoader.load(getClass().getResource("/athina/views/MasterScene.fxml")));
             Stage window = (Stage)((Node)event.getSource()).getScene().getWindow();
             window.setScene(loginScene);
             window.setResizable(false);
@@ -145,7 +150,7 @@ public class AdminGradingSceneController implements Initializable {
         
         try{
             EditGradeSceneController.selectedRegistration = selectedRegistration;
-            Scene scene = new Scene (FXMLLoader.load(getClass().getResource("EditGradeScene.fxml")));
+            Scene scene = new Scene (FXMLLoader.load(getClass().getResource("/athina/views/EditGradeScene.fxml")));
             Stage window = (Stage)((Node)event.getSource()).getScene().getWindow();
             window.setScene(scene);
             window.setTitle("Athina - Εισαγωγή Βαθμού");

@@ -3,8 +3,12 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package athina;
+package athina.controllers;
 
+import athina.models.Admin;
+import athina.Athina;
+import athina.models.Professor;
+import athina.models.Student;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -72,7 +76,7 @@ public class MasterSceneController implements Initializable {
     
         public void loginButtonPressed(ActionEvent event) {
         try{
-            Scene loginScene = new Scene (FXMLLoader.load(getClass().getResource("LoginScene.fxml")));
+            Scene loginScene = new Scene (FXMLLoader.load(getClass().getResource("/athina/views/LoginScene.fxml")));
             Athina.user=null;
             Stage window = (Stage)((Node)event.getSource()).getScene().getWindow();
             window.setScene(loginScene);
@@ -89,7 +93,7 @@ public class MasterSceneController implements Initializable {
     public void logoutButtonPressed(ActionEvent event) {
         try{
             Athina.user=null;
-            Scene loginScene = new Scene (FXMLLoader.load(getClass().getResource("LoginScene.fxml")));
+            Scene loginScene = new Scene (FXMLLoader.load(getClass().getResource("/athina/views/LoginScene.fxml")));
             Stage window = (Stage)((Node)event.getSource()).getScene().getWindow();
             window.setScene(loginScene);
             window.setResizable(false);
@@ -103,7 +107,7 @@ public class MasterSceneController implements Initializable {
 
     public void announcementsButtonPressed(ActionEvent event) {
         try{
-            Scene announcementsScene = new Scene (FXMLLoader.load(getClass().getResource("AnnouncementsScene.fxml")));
+            Scene announcementsScene = new Scene (FXMLLoader.load(getClass().getResource("/athina/views/AnnouncementsScene.fxml")));
             Stage window = (Stage)((Node)event.getSource()).getScene().getWindow();
             window.setScene(announcementsScene);
             window.setResizable(false);
@@ -118,7 +122,7 @@ public class MasterSceneController implements Initializable {
     public void registerButtonPressed(ActionEvent event) {
         
         try{
-            Scene registerScene = new Scene (FXMLLoader.load(getClass().getResource("RegisterUserScene.fxml")));
+            Scene registerScene = new Scene (FXMLLoader.load(getClass().getResource("/athina/views/RegisterUserScene.fxml")));
             Stage window = (Stage)((Node)event.getSource()).getScene().getWindow();
             window.setScene(registerScene);
             window.setTitle("Athina - Εγγραφή χρήστη");
@@ -133,7 +137,7 @@ public class MasterSceneController implements Initializable {
     public void registerCourse(ActionEvent event){
         
         try{
-            Scene courses = new Scene (FXMLLoader.load(getClass().getResource("CourseRegistrationScene.fxml")));
+            Scene courses = new Scene (FXMLLoader.load(getClass().getResource("/athina/views/CourseRegistrationScene.fxml")));
             Stage window = (Stage)((Node)event.getSource()).getScene().getWindow();
             window.setScene(courses);
             window.setResizable(false);
@@ -150,9 +154,9 @@ public class MasterSceneController implements Initializable {
         try{
             Scene scene = null;
             if (Athina.user instanceof Admin)
-                scene = new Scene (FXMLLoader.load(getClass().getResource("AdminGradingScene.fxml")));
+                scene = new Scene (FXMLLoader.load(getClass().getResource("/athina/views/AdminGradingScene.fxml")));
             else
-                scene = new Scene (FXMLLoader.load(getClass().getResource("CourseGradesScene.fxml")));
+                scene = new Scene (FXMLLoader.load(getClass().getResource("/athina/views/CourseGradesScene.fxml")));
             Stage window = (Stage)((Node)event.getSource()).getScene().getWindow();
             window.setScene(scene);
             window.setTitle("Athina - Βαθμολογίες");

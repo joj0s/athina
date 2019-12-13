@@ -3,8 +3,12 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package athina;
+package athina.controllers;
 
+import athina.models.Admin;
+import athina.Data;
+import athina.models.Professor;
+import athina.models.Student;
 import java.io.IOException;
 import java.net.URL;
 import java.util.Date;
@@ -79,7 +83,7 @@ public class RegisterUserSceneController implements Initializable {
     
     public void backButtonPressed(ActionEvent event) {
         try{
-            Scene loginScene = new Scene (FXMLLoader.load(getClass().getResource("MasterScene.fxml")));
+            Scene loginScene = new Scene (FXMLLoader.load(getClass().getResource("/athina/views/MasterScene.fxml")));
             Stage window = (Stage)((Node)event.getSource()).getScene().getWindow();
             window.setScene(loginScene);
             window.setResizable(false);

@@ -5,6 +5,7 @@
  */
 package athina;
 
+import athina.models.User;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -16,10 +17,11 @@ import javafx.stage.Stage;
  * @author apostoles
  */
 public class Athina extends Application {
+    public static User user;
     
     @Override
     public void start(Stage stage) throws Exception {
-        Parent root = FXMLLoader.load(getClass().getResource("MasterScene.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("/athina/views/MasterScene.fxml"));
         
         Scene scene = new Scene(root);
         
@@ -36,6 +38,6 @@ public class Athina extends Application {
         launch(args);
     }
     
-    static User user;
+    
     
 }

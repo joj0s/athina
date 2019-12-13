@@ -3,9 +3,10 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package athina;
+package athina.controllers;
 
-import static athina.AnnouncementsController.selectedAnnouncement;
+import athina.models.FormattedAnnouncement;
+import static athina.controllers.AnnouncementsController.selectedAnnouncement;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -55,7 +56,7 @@ public class FullAnnouncementSceneController implements Initializable {
     
     public void goBack(ActionEvent event){
         try{
-            Scene announcementScene = new Scene (FXMLLoader.load(getClass().getResource("AnnouncementsScene.fxml")));
+            Scene announcementScene = new Scene (FXMLLoader.load(getClass().getResource("/athina/views/AnnouncementsScene.fxml")));
             Stage window = (Stage)((Node)event.getSource()).getScene().getWindow();
             window.setScene(announcementScene);
             window.setResizable(false);

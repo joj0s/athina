@@ -3,8 +3,12 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package athina;
+package athina.controllers;
 
+import athina.Athina;
+import athina.models.CourseRegistration;
+import athina.models.FormattedCourseRegistration;
+import athina.models.Student;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
@@ -74,7 +78,7 @@ public class CourseGradesSceneController implements Initializable {
     
     public void backButtonPressed(ActionEvent event) {
         try{
-            Scene scene = new Scene (FXMLLoader.load(getClass().getResource("MasterScene.fxml")));
+            Scene scene = new Scene (FXMLLoader.load(getClass().getResource("/athina/views/MasterScene.fxml")));
             Stage window = (Stage)((Node)event.getSource()).getScene().getWindow();
             window.setScene(scene);
             window.setResizable(false);

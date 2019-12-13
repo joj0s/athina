@@ -6,7 +6,7 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane id="AnchorPane" fx:id="pane" prefHeight="581.0" prefWidth="821.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="athina.PostAnnouncementSceneController">
+<AnchorPane id="AnchorPane" fx:id="pane" prefHeight="581.0" prefWidth="821.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="athina.controllers.PostAnnouncementSceneController">
    <children>
       <TextArea fx:id="bodyTextArea" layoutX="35.0" layoutY="212.0" prefHeight="300.0" prefWidth="750.0" />
       <TextField fx:id="titleTextField" layoutX="35.0" layoutY="115.0" prefHeight="25.0" prefWidth="468.0" />

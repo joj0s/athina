@@ -8,7 +8,7 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane id="AnchorPane" prefHeight="470.0" prefWidth="640.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="athina.FullAnnouncementSceneController">
+<AnchorPane id="AnchorPane" prefHeight="470.0" prefWidth="640.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="athina.controllers.FullAnnouncementSceneController">
    <children>
       <Label fx:id="announcementTitleLabel" layoutX="253.0" layoutY="75.0" text="Τίτλος Ανακοίνωσης" underline="true" />
       <Label fx:id="announcementDateLabel" layoutX="531.0" layoutY="442.0" style="-fx-font-size: 11px;" text="15/11/2019" textFill="#4e5bd0" textOverrun="WORD_ELLIPSIS">

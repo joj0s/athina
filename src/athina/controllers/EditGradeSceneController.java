@@ -3,8 +3,9 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package athina;
+package athina.controllers;
 
+import athina.models.CourseRegistration;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -42,7 +43,7 @@ public class EditGradeSceneController implements Initializable {
     public void backButtonPressed(ActionEvent event) {
         try{
             EditGradeSceneController.selectedRegistration = selectedRegistration;
-            Scene scene = new Scene (FXMLLoader.load(getClass().getResource("AdminGradingScene.fxml")));
+            Scene scene = new Scene (FXMLLoader.load(getClass().getResource("/athina/views/AdminGradingScene.fxml")));
             Stage window = (Stage)((Node)event.getSource()).getScene().getWindow();
             window.setScene(scene);
             window.setTitle("Athina - Εισαγωγή Βαθμού");

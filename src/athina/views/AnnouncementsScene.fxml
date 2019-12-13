@@ -6,7 +6,7 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane id="AnchorPane" fx:id="pane" prefHeight="653.0" prefWidth="1113.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="athina.AnnouncementsController">
+<AnchorPane id="AnchorPane" fx:id="pane" prefHeight="653.0" prefWidth="1113.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="athina.controllers.AnnouncementsController">
     <children>
       <ComboBox fx:id="filterCombobox" layoutX="877.0" layoutY="237.0" onAction="#filterTable" prefHeight="25.0" prefWidth="181.0" />
       <Button fx:id="makeAnnouncementButton" layoutX="904.0" layoutY="443.0" mnemonicParsing="false" onAction="#postAnnouncement" text="Νέα Ανακοίνωση" />

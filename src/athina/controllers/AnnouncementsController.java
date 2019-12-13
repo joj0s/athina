@@ -3,8 +3,14 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package athina;
+package athina.controllers;
 
+import athina.models.Announcement;
+import athina.Athina;
+import athina.models.Course;
+import athina.Data;
+import athina.models.FormattedAnnouncement;
+import athina.models.Student;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -303,7 +309,7 @@ public class AnnouncementsController implements Initializable {
     public void showAnnouncement(ActionEvent event) {
         try {
             setCurrentAnnouncement();
-            Scene announcementScene = new Scene(FXMLLoader.load(getClass().getResource("FullAnnouncementScene.fxml")));
+            Scene announcementScene = new Scene(FXMLLoader.load(getClass().getResource("/athina/views/FullAnnouncementScene.fxml")));
             Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
             window.setScene(announcementScene);
             window.setResizable(false);
@@ -317,7 +323,7 @@ public class AnnouncementsController implements Initializable {
     public void postAnnouncement(ActionEvent event) {
         try {
             setCurrentAnnouncement();
-            Scene announcementScene = new Scene(FXMLLoader.load(getClass().getResource("PostAnnouncementScene.fxml")));
+            Scene announcementScene = new Scene(FXMLLoader.load(getClass().getResource("/athina/views/PostAnnouncementScene.fxml")));
             Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
             window.setScene(announcementScene);
             window.setResizable(false);
@@ -332,7 +338,7 @@ public class AnnouncementsController implements Initializable {
         try {
             Scene goBackScene;
             Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
-            goBackScene = new Scene(FXMLLoader.load(getClass().getResource("MasterScene.fxml")));
+            goBackScene = new Scene(FXMLLoader.load(getClass().getResource("/athina/views/MasterScene.fxml")));
             window.setTitle("Athina");
 
             window.setScene(goBackScene);

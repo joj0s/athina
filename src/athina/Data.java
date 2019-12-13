@@ -5,6 +5,13 @@
  */
 package athina;
 
+import athina.models.CourseRegistration;
+import athina.models.Professor;
+import athina.models.Student;
+import athina.models.Course;
+import athina.models.Admin;
+import athina.models.User;
+import athina.models.Announcement;
 import java.util.Date;
 
 /**

@@ -3,8 +3,13 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package athina;
+package athina.controllers;
 
+import athina.models.Announcement;
+import athina.Athina;
+import athina.models.Course;
+import athina.Data;
+import athina.models.Professor;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
@@ -137,7 +142,7 @@ public class PostAnnouncementSceneController implements Initializable {
     @FXML
     private void goBack(ActionEvent event) {
         try {
-            Scene announcementScene = new Scene(FXMLLoader.load(getClass().getResource("AnnouncementsScene.fxml")));
+            Scene announcementScene = new Scene(FXMLLoader.load(getClass().getResource("/athina/views/AnnouncementsScene.fxml")));
             Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
             window.setScene(announcementScene);
             window.setResizable(false);
