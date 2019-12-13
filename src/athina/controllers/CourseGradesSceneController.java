@@ -33,7 +33,6 @@ import javafx.stage.Stage;
  */
 
 public class CourseGradesSceneController implements Initializable {
-
     /**
      * Initializes the controller class.
      */
@@ -45,12 +44,16 @@ public class CourseGradesSceneController implements Initializable {
     private TableColumn<FormattedCourseRegistration, Integer> gradesTableSemester;
     @FXML
     private TableColumn<FormattedCourseRegistration, Float> gradesTableGrade;
+    @FXML
+    private TableColumn<FormattedCourseRegistration, String> gradesTableMessage;
             
     @Override
     public void initialize(URL url, ResourceBundle rb) {
        gradesTableCourse.setCellValueFactory(new PropertyValueFactory<>("courseName"));
        gradesTableSemester.setCellValueFactory(new PropertyValueFactory<>("courseSemester"));
        gradesTableGrade.setCellValueFactory(new PropertyValueFactory<>("grade"));
+       gradesTableMessage.setCellValueFactory(new PropertyValueFactory<>("message"));
+
        
        Student thisStudent = (Student)Athina.user;
        ArrayList<CourseRegistration> registrations = thisStudent.getRegistrations();
@@ -81,7 +84,7 @@ public class CourseGradesSceneController implements Initializable {
             Scene scene = new Scene (FXMLLoader.load(getClass().getResource("/athina/views/MasterScene.fxml")));
             Stage window = (Stage)((Node)event.getSource()).getScene().getWindow();
             window.setScene(scene);
-            window.setResizable(false);
+            window.setResizable(true);
             window.setTitle("Athina");
             window.show();
         }

@@ -50,14 +50,18 @@ public class AdminGradingSceneController implements Initializable {
     private TableColumn<FormattedCourseRegistration, String> gradesTableName;
     @FXML
     private TableColumn<FormattedCourseRegistration, Float> gradesTableGrade;
+    @FXML
+    private TableColumn<FormattedCourseRegistration, String> gradesTableMessage;
+    
     
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        gradesTableUsername.setCellValueFactory(new PropertyValueFactory<>("username"));
+        gradesTableUsername.setCellValueFactory(new PropertyValueFactory<>("courseName"));
         gradesTableSurname.setCellValueFactory(new PropertyValueFactory<>("surname"));
         gradesTableName.setCellValueFactory(new PropertyValueFactory<>("name"));
         gradesTableGrade.setCellValueFactory(new PropertyValueFactory<>("grade"));
-        
+        gradesTableMessage.setCellValueFactory(new PropertyValueFactory<>("message"));
+    
         addAllCoursesToComboBox();
     }    
     
