@@ -20,6 +20,8 @@
           <TableColumn fx:id="gradesTableCourse" prefWidth="217.0" text="Μαθημα" />
           <TableColumn fx:id="gradesTableSemester" minWidth="0.0" prefWidth="65.0" text="Εξαμηνο" />
             <TableColumn fx:id="gradesTableGrade" prefWidth="75.0" text="Βαθμος" />
+            <TableColumn fx:id="gradesTableMessage" prefWidth="75.0" text="Μήνυμα" />
+
         </columns>
       </TableView>
    </children>
