@@ -51,9 +51,9 @@ public class Data {
         
         admins[0] = new Admin("mkalou", "123","Maria", "Kalou");
         
-        courses[0] = new Course(1, "Μαθηματικά 1", 6, 1, professors[2]);
-        courses[1] = new Course(2, "Αρχιτεκτονική HY", 6, 3, professors[0]);
-        courses[2] = new Course(3, "Προγραμματισμός 1", 4, 1, professors[1]);
+        courses[0] = new Course("123-Θ", "Μαθηματικά 1", 6, 1, professors[2]);
+        courses[1] = new Course("156-Θ", "Αρχιτεκτονική HY", 6, 3, professors[0]);
+        courses[2] = new Course("083-Ε", "Προγραμματισμός 1", 4, 1, professors[1]);
         
         registrations[0] = new CourseRegistration(students[0], courses[0], "2018-19 XEIM");
         registrations[1] = new CourseRegistration(students[1], courses[1], "2018-19 XEIM");
@@ -86,4 +86,13 @@ public class Data {
         }
     }
     
+    public static void insertCourse(Course course) {
+        for (int i=0; i<courses.length; i++) {
+            if (courses[i] == null)
+            {
+                courses[i] = course;
+                return;
+            }
+        }
+    }
 }
