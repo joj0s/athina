@@ -56,7 +56,12 @@ public class AdminAddPrerequisitController implements Initializable {
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
+        statusLabel.setText("");
         for(Course course : Data.getTheoryOnlyCourses()){
+            
+            if(course == null)
+                break;
+            
             courses.add(course);
         }
         mainCourseChoices.setItems(courses);

@@ -96,6 +96,9 @@ public class AdminInsertCourseController implements Initializable {
         
         
         for(Professor professor : Data.professors){
+            if(professor == null)
+                break;
+            
             Professors.add(professor);
         }
             profChoice.setItems(Professors);
@@ -103,10 +106,14 @@ public class AdminInsertCourseController implements Initializable {
     }
 
     public void showWorkshopInput() {
-        if (workshopCheck.isSelected() && !pane.getChildren().contains(workshopProfLabel) && pane.getChildren().contains(workshopProfChoice)) {
+        if (workshopCheck.isSelected()) {
             pane.getChildren().add(workshopProfLabel);
             pane.getChildren().add(workshopProfChoice);
         }
+        if (!workshopCheck.isSelected()) {
+            pane.getChildren().remove(workshopProfLabel);
+            pane.getChildren().remove(workshopProfChoice);
+        }        
     }
 
     public void submitButtonPressed() {
@@ -114,13 +121,13 @@ public class AdminInsertCourseController implements Initializable {
             String theoryId = id+"-Θ";
             String theoryTitle = title + " (Θ) ";
             // public Course(String theoryId, String name, int credits, int semester, Professor professor)
-            Data.insertCourse(new Course(id,theoryTitle,credits,semester,professor));
+            Data.insertCourse(new Course(theoryId,theoryTitle,credits,semester,professor));
             
             String workshopId = id+"-Ε";
             String workshopTitle = title + " (Ε) ";
             if(hasWorkshop)
                 Data.insertCourse(new Course(workshopId,workshopTitle,credits,semester,workshopProfessor));
-        }
+        }        
     }
 
     private boolean verifySubmit() {
