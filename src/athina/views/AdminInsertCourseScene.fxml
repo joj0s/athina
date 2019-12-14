@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.text.*?>
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane id="AnchorPane" fx:id="pane" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="athina.controllers.AdminInsertCourseController">
+   <children>
+      <TextField fx:id="titleField" layoutX="139.0" layoutY="69.0" prefHeight="25.0" prefWidth="322.0" />
+      <Label fx:id="titleLabel" layoutX="278.0" layoutY="36.0" prefHeight="0.0" prefWidth="44.0" text="Τίτλος" />
+      <Label fx:id="idLabel" layoutX="154.0" layoutY="111.0" text="Κωδικός" />
+      <TextField fx:id="idField" layoutX="139.0" layoutY="135.0" prefHeight="25.0" prefWidth="85.0" />
+      <CheckBox fx:id="workshopCheck" layoutX="141.0" layoutY="276.0" mnemonicParsing="false" onAction="#showWorkshopInput" text="Έχει Εργαστήριο;" />
+      <Button fx:id="submitButton" layoutX="263.0" layoutY="322.0" mnemonicParsing="false" onAction="#submitButtonPressed" text="Υποβολή" />
+      <Button fx:id="returnButton" layoutX="35.0" layoutY="28.0" mnemonicParsing="false" onAction="#goBack" text="Επιστροφή" />
+      <Text fx:id="statusLabel" layoutX="226.0" layoutY="379.0" strokeType="OUTSIDE" strokeWidth="0.0" text="ΜΗΝΥΜΑ ΚΑΤΑΣΤΑΣΗΣ" textAlignment="CENTER" />
+      <TextField fx:id="semesterInput" layoutX="149.0" layoutY="207.0" prefHeight="25.0" prefWidth="64.0" />
+      <Label fx:id="idLabel1" layoutX="153.0" layoutY="178.0" prefHeight="0.0" prefWidth="56.0" text="Εξάμηνο" />
+      <ChoiceBox fx:id="profChoice" layoutX="311.0" layoutY="135.0" prefWidth="150.0" />
+      <Label layoutX="354.0" layoutY="111.0" text="Διδασκων" />
+      <TextField fx:id="creditsInput" layoutX="354.0" layoutY="207.0" prefHeight="25.0" prefWidth="64.0" />
+      <Label fx:id="idLabel11" layoutX="317.0" layoutY="178.0" prefHeight="15.0" prefWidth="139.0" text="Διδακτικές Μονάδες" textAlignment="CENTER" />
+      <Label fx:id="workshopProfLabel" layoutX="312.0" layoutY="245.0" text="Διδασκων Εργαστηριου" />
+      <ChoiceBox fx:id="workshopProfChoice" layoutX="314.0" layoutY="272.0" prefWidth="150.0" />
+   </children>
+</AnchorPane>

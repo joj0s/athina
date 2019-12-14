@@ -36,10 +36,27 @@ public class Professor extends User{
     public void setCoursesTaught(Course[] coursesTaught) {
         this.coursesTaught = coursesTaught;
     }
+    
+    public void addCoursesTaught(Course course){
+        for(int i=0;i<coursesTaught.length;i++)
+            if( coursesTaught[i].equals(null) ){
+             coursesTaught[i] = course;
+             break;
+            }   
+    }
+    
+    public boolean hasCourse(Course course){
+        for(Course c:coursesTaught)
+        {
+            if (c.getName().equals(course.getName()))
+                return true;
+        }
+        return false;
+    }
 
     @Override
     public String toString() {
-        return "Professor{" + "coursesTaught=" + coursesTaught + '}';
+        return super.getUsername();
     }
     
     

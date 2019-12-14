@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="athina.controllers.AdminAddPrerequisitController">
+   <children>
+      <ChoiceBox fx:id="mainCourseChoices" layoutX="49.0" layoutY="188.0" prefWidth="150.0" />
+      <ChoiceBox fx:id="preCourseChoices" layoutX="369.0" layoutY="187.0" prefWidth="150.0" />
+      <Label fx:id="mainCourseLabel" layoutX="62.0" layoutY="148.0" text="Τιτλος Μαθήματος" />
+      <Label fx:id="preCourseLabel" layoutX="362.0" layoutY="148.0" text="Τιτλος Προαπαιτούμενου" />
+      <Button fx:id="returnButton" layoutX="31.0" layoutY="27.0" mnemonicParsing="false" onAction="#goBack" text="Επιστροφή" />
+      <Button fx:id="submitButton" layoutX="445.0" layoutY="284.0" mnemonicParsing="false" onAction="#submit" text="Υποβολή" />
+      <Label fx:id="statusLabel" layoutX="300.0" layoutY="344.0" text="Κατάσταση" />
+      <Label fx:id="sceneTitleLabel" layoutX="194.0" layoutY="32.0" text="ΠΡΟΣΘΗΚΗ ΠΡΟΑΠΑΙΤΟΥΜΕΝΟΥ" />
+      <Button fx:id="chooseMainCourseBUtton" layoutX="88.0" layoutY="236.0" mnemonicParsing="false" onAction="#filterPreRequisit" text="Επιλογή" />
+   </children>
+</AnchorPane>

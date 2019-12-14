@@ -40,6 +40,9 @@ public class MasterSceneController implements Initializable {
     @FXML
     private Button logOutButton;
     @FXML
+    private Button manageCoursesButton;
+    
+    @FXML
     private AnchorPane pane;
     
     /**
@@ -51,12 +54,14 @@ public class MasterSceneController implements Initializable {
             pane.getChildren().remove(loginButton);
             pane.getChildren().remove(registerButton);
             usernameLabel.setText(Athina.user.getUsername());
+            pane.getChildren().remove(manageCoursesButton);
         }
         else if (Athina.user instanceof Professor) {
             pane.getChildren().remove(registrationButton);
             pane.getChildren().remove(gradesButton);
             pane.getChildren().remove(registerButton);
             pane.getChildren().remove(loginButton);
+            pane.getChildren().remove(manageCoursesButton);
             usernameLabel.setText(Athina.user.getUsername());
         }
         else if (Athina.user instanceof Admin) {
@@ -70,6 +75,7 @@ public class MasterSceneController implements Initializable {
             pane.getChildren().remove(registrationButton);
             pane.getChildren().remove(gradesButton);
             pane.getChildren().remove(registerButton);
+            pane.getChildren().remove(manageCoursesButton);
         }
     }    
     
@@ -149,6 +155,21 @@ public class MasterSceneController implements Initializable {
             }  
         }
     
+    public void manageCourses(ActionEvent event){
+        
+        try{
+            Scene courses = new Scene (FXMLLoader.load(getClass().getResource("/athina/views/AdminCourseManagementScene.fxml")));
+            Stage window = (Stage)((Node)event.getSource()).getScene().getWindow();
+            window.setScene(courses);
+            window.setResizable(false);
+            window.setTitle("Athina - Διαχείριση Μαθημάτων");
+            window.show();
+        }
+        catch(IOException e){
+            e.printStackTrace();
+            }  
+        }
+    
     public void gradesButtonPressed(ActionEvent event) {
         
         try{
@@ -166,6 +187,8 @@ public class MasterSceneController implements Initializable {
             e.printStackTrace();
         }   
     }
+    
+    
     
     
     
