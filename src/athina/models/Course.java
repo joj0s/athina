@@ -75,11 +75,23 @@ public class Course {
     public int getSemester() {
         return semester;
     }
+    
+    public void setPreRequisit(Course course) {
+        this.preRequisit = course;
+    }
+    
+    public Course getPreRequisit() {
+        return preRequisit;
+    }
 
     public Professor getProfessor() {
         return professor;
     }
     
+    @Override
+    public String toString() {
+        return name;
+    }
     
     
 }

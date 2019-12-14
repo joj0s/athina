@@ -72,6 +72,41 @@ public class Data {
         }
     }
     
+    public static Course[] getTheoryOnlyCourses() {
+        
+        Course theoryCourses[]=new Course[30];
+        int i =0;
+        for(Course course : courses)
+        {
+            if (course == null)
+                break;
+            
+            String id = course.getId();
+            String workshopId = id.substring(0,id.length() - 1) + "Ε";
+            if(id.endsWith("Θ"))
+                if(!courseExists(workshopId))
+                {
+                    theoryCourses[i] = course;
+                    i++;
+                }
+                    
+        }
+        return theoryCourses;
+    }
+    
+    private static boolean courseExists(String id)
+    {
+        for(Course course : courses)
+        {
+            if (course == null)
+                break;
+            
+            if (course.getId().equals(id))
+                return true;
+        }
+        return false;
+    }
+    
     public static void insertProfessor(Professor professor) {
         for (int i=0; i<professors.length; i++){
             if (professors[i] == null)
