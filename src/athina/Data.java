@@ -94,6 +94,23 @@ public class Data {
         return theoryCourses;
     }
     
+    public static Course[] getTheoryCourses() {
+        Course theoryCourses[]=new Course[30];
+        int i =0;
+        for(Course course : courses)
+        {
+            if (course == null)
+                break;
+            String id = course.getId();
+            if(id.endsWith("Θ"))
+                {
+                    theoryCourses[i] = course;
+                    i++;
+                }
+        }
+        return theoryCourses;
+    }
+    
     private static boolean courseExists(String id)
     {
         for(Course course : courses)

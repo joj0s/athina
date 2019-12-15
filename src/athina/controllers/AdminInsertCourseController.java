@@ -122,7 +122,6 @@ public class AdminInsertCourseController implements Initializable {
             String theoryTitle = title + " (Θ) ";
             // public Course(String theoryId, String name, int credits, int semester, Professor professor)
             Data.insertCourse(new Course(theoryId,theoryTitle,credits,semester,professor));
-            
             String workshopId = id+"-Ε";
             String workshopTitle = title + " (Ε) ";
             if(hasWorkshop)

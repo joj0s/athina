@@ -96,6 +96,11 @@ public class CourseRegistrationSceneController implements Initializable {
         int i = 0;
         while(Data.courses[i] != null){
             if (!passedCourses.contains(Data.courses[i]))
+                if(Data.courses[i].getPreRequisit()!=null)
+                {
+                   if(!passedCourses.contains(Data.courses[i].getPreRequisit()))
+                       break;
+                }
                 courses.add(Data.courses[i]);
             i++; 
         }

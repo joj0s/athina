@@ -57,7 +57,7 @@ public class AdminAddPrerequisitController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         statusLabel.setText("");
-        for(Course course : Data.getTheoryOnlyCourses()){
+        for(Course course : Data.getTheoryCourses()){
             
             if(course == null)
                 break;
@@ -70,7 +70,7 @@ public class AdminAddPrerequisitController implements Initializable {
     public void filterPreRequisit(){
         ObservableList<Course> preRequisitCourses = FXCollections.observableArrayList();
         mainCourse = mainCourseChoices.getValue();
-        for(Course course : Data.getTheoryOnlyCourses()){
+        for(Course course : Data.courses){
             
             if(course == null)
                 break;
