@@ -11,6 +11,7 @@ import athina.models.FormattedCourseRegistration;
 import athina.models.Student;
 import java.io.IOException;
 import java.net.URL;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
 import javafx.collections.FXCollections;
@@ -45,12 +46,15 @@ public class CourseGradesSceneController implements Initializable {
     private TableColumn<FormattedCourseRegistration, Integer> gradesTableSemester;
     @FXML
     private TableColumn<FormattedCourseRegistration, Float> gradesTableGrade;
+    @FXML
+    private TableColumn<FormattedCourseRegistration, LocalDate> gradesTableDateExamined;
             
     @Override
     public void initialize(URL url, ResourceBundle rb) {
        gradesTableCourse.setCellValueFactory(new PropertyValueFactory<>("courseName"));
        gradesTableSemester.setCellValueFactory(new PropertyValueFactory<>("courseSemester"));
        gradesTableGrade.setCellValueFactory(new PropertyValueFactory<>("grade"));
+       gradesTableDateExamined.setCellValueFactory(new PropertyValueFactory<>("dateExamined"));
        
        Student thisStudent = (Student)Athina.user;
        ArrayList<CourseRegistration> registrations = thisStudent.getRegistrations();
@@ -64,12 +68,14 @@ public class CourseGradesSceneController implements Initializable {
         String name = "";
         int semester = 0;
         float grade = 0;
+        LocalDate dateExamined;
         
         for(CourseRegistration r: registrations){
             name = r.getCourse().getName();
             semester = r.getCourse().getSemester();
             grade = r.getGrade();
-            list.add(new FormattedCourseRegistration(name, semester, grade));
+            dateExamined = r.getDateExamined();
+            list.add(new FormattedCourseRegistration(name, semester, grade, dateExamined));
         }
         
         return list;

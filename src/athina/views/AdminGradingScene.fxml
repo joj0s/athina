@@ -15,12 +15,13 @@
             <Font size="19.0" />
          </font>
       </Label>
-      <TableView fx:id="gradesTable" layoutX="139.0" layoutY="149.0" prefHeight="309.0" prefWidth="549.0">
+      <TableView fx:id="gradesTable" layoutX="77.0" layoutY="148.0" prefHeight="309.0" prefWidth="674.0">
         <columns>
           <TableColumn fx:id="gradesTableUsername" prefWidth="140.0" text="Username" />
           <TableColumn fx:id="gradesTableSurname" minWidth="7.0" prefWidth="198.0" text="Επώνυμο" />
             <TableColumn fx:id="gradesTableName" prefWidth="128.0" text="Όνομα" />
             <TableColumn fx:id="gradesTableGrade" prefWidth="82.0" text="Βαθμός" />
+            <TableColumn fx:id="gradesTableDate" prefWidth="125.0" text="Ημερομηνία" />
         </columns>
       </TableView>
       <ComboBox fx:id="coursePicker" layoutX="339.0" layoutY="85.0" onAction="#courseSelected" prefWidth="150.0" promptText="ΜΑΘΗΜΑ" />

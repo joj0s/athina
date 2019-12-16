@@ -10,9 +10,9 @@ import athina.models.Course;
 import athina.models.CourseRegistration;
 import athina.Data;
 import athina.models.Student;
-import java.awt.event.MouseEvent;
 import java.io.IOException;
 import java.net.URL;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
@@ -143,7 +143,7 @@ public class CourseRegistrationSceneController implements Initializable {
             }
             else {
                 if(Data.registrations[i] == null){
-                    Data.registrations[i] = new CourseRegistration(student,selected.get(0), "2018-19 XEIM");
+                    Data.registrations[i] = new CourseRegistration(student,selected.get(0), "2018-19 XEIM",LocalDate.now());
                     selected.remove(0);      
                 }
             }

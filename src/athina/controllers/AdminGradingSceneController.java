@@ -12,6 +12,7 @@ import athina.models.FormattedCourseRegistration;
 import athina.models.Student;
 import java.io.IOException;
 import java.net.URL;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
 import javafx.collections.FXCollections;
@@ -50,6 +51,9 @@ public class AdminGradingSceneController implements Initializable {
     private TableColumn<FormattedCourseRegistration, String> gradesTableName;
     @FXML
     private TableColumn<FormattedCourseRegistration, Float> gradesTableGrade;
+    @FXML
+    private TableColumn<FormattedCourseRegistration, LocalDate> gradesTableDate;
+    
     
     @Override
     public void initialize(URL url, ResourceBundle rb) {
@@ -57,7 +61,7 @@ public class AdminGradingSceneController implements Initializable {
         gradesTableSurname.setCellValueFactory(new PropertyValueFactory<>("surname"));
         gradesTableName.setCellValueFactory(new PropertyValueFactory<>("name"));
         gradesTableGrade.setCellValueFactory(new PropertyValueFactory<>("grade"));
-        
+        gradesTableDate.setCellValueFactory(new PropertyValueFactory<>("dateExamined"));
         addAllCoursesToComboBox();
     }    
     
@@ -84,6 +88,7 @@ public class AdminGradingSceneController implements Initializable {
     private void populateRegistrationTable(ArrayList<CourseRegistration> registrations) {
         
         String username, surname, name;
+        LocalDate dateExamined;
         float grade;
         ObservableList<FormattedCourseRegistration> list = FXCollections.observableArrayList();
         
@@ -92,7 +97,8 @@ public class AdminGradingSceneController implements Initializable {
             surname = r.getStudent().getLastName();
             name = r.getStudent().getFirstName();
             grade = r.getGrade();
-            list.add(new FormattedCourseRegistration(username, surname, name, grade));
+            dateExamined = r.getDateExamined();
+            list.add(new FormattedCourseRegistration(username, surname, name, grade,dateExamined));
         }
         gradesTable.setItems(list);
         
@@ -145,7 +151,7 @@ public class AdminGradingSceneController implements Initializable {
                     selectedRegistration = r;
                     break;
                 }    
-            } 
+            }
         }
         
         try{
