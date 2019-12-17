@@ -9,7 +9,7 @@ import athina.models.Announcement;
 import athina.Athina;
 import athina.models.Course;
 import athina.Data;
-import athina.models.FormattedAnnouncement;
+import athina.formatters.FormattedAnnouncement;
 import athina.models.Student;
 import java.io.IOException;
 import java.net.URL;

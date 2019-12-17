@@ -1,4 +1,4 @@
-package athina.models;
+package athina.formatters;
 
 /*
  * To change this license header, choose License Headers in Project Properties.
