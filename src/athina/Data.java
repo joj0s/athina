@@ -12,6 +12,7 @@ import athina.models.Course;
 import athina.models.Admin;
 import athina.models.User;
 import athina.models.Announcement;
+import java.time.LocalDate;
 import java.util.Date;
 
 /**
@@ -53,11 +54,12 @@ public class Data {
         
         courses[0] = new Course("123-Θ", "Μαθηματικά 1", 6, 1, professors[2]);
         courses[1] = new Course("156-Θ", "Αρχιτεκτονική HY", 6, 3, professors[0]);
-        courses[2] = new Course("083-Ε", "Προγραμματισμός 1", 4, 1, professors[1]);
+        courses[2] = new Course("083-Ε", "Προγραμματισμός 1 - Ε", 2, 1, professors[1]);
+        courses[3] = new Course("083-Θ", "Προγραμματισμός 1", 4, 1, professors[1]);
         
-        registrations[0] = new CourseRegistration(students[0], courses[0], "2018-19 XEIM");
-        registrations[1] = new CourseRegistration(students[1], courses[1], "2018-19 XEIM");
-        registrations[2] = new CourseRegistration(students[2], courses[2], "2018-19 XEIM");
+        registrations[0] = new CourseRegistration(students[0], courses[0], "2018-19 XEIM",LocalDate.now());
+        registrations[1] = new CourseRegistration(students[1], courses[1], "2018-19 XEIM",LocalDate.now());
+        registrations[2] = new CourseRegistration(students[2], courses[2], "2018-19 XEIM",LocalDate.now());
         
         announcements[0] =  new Announcement(1, "Anakoinwsi 1", "Auto einai to swma ths anakoinvwshs", new Date(), admins[0]);
         announcements[1] =  new Announcement(1, "Anakoinwsi Mathimatikwn", "Auto einai to swma ths anakoinvwshs mathimatikwn",

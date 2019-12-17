@@ -5,30 +5,37 @@
  */
 package athina.models;
 
+import java.time.LocalDate;
+import java.util.Date;
+
 /**
  *
  * @author jojos
  */
 public class FormattedCourseRegistration {
-    
+
     private String courseName;
     private int courseSemester;
     private String username;
     private String surname;
     private String name;
     private float grade;
+    private LocalDate dateExamined;
+    private LocalDate dateRegistered;
 
-    public FormattedCourseRegistration(String username, String surname, String name, float grade) {
+    public FormattedCourseRegistration(String username, String surname, String name, float grade,LocalDate dateExamined) {
         this.username = username;
         this.surname = surname;
         this.name = name;
         this.grade = grade;
+        this.dateExamined = dateExamined;
     }
 
-    public FormattedCourseRegistration(String courseName, int courseSemester, float grade) {
+    public FormattedCourseRegistration(String courseName, int courseSemester, float grade,LocalDate dateExamined) {
         this.courseName = courseName;
         this.courseSemester = courseSemester;
         this.grade = grade;
+        this.dateExamined = dateExamined;
     }
 
     public String getCourseName() {
@@ -38,7 +45,6 @@ public class FormattedCourseRegistration {
     public int getCourseSemester() {
         return courseSemester;
     }
-   
 
     public String getUsername() {
         return username;
@@ -55,7 +61,16 @@ public class FormattedCourseRegistration {
     public float getGrade() {
         return grade;
     }
+
+    public LocalDate getDateExamined() {
+        return dateExamined;
+    }
+
+    public LocalDate getDateRegistered() {
+        return dateRegistered;
+    }
+
+
     
-    
-    
+
 }

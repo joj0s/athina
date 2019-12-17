@@ -19,7 +19,7 @@
         <columns>
           <TableColumn fx:id="availableCoursesSemester" minWidth="0.0" prefWidth="69.0" text="Εξάμηνο" />
             <TableColumn fx:id="availableCoursesCredits" prefWidth="75.0" text="ΔΜ" />
-          <TableColumn fx:id="availableCoursesName" prefWidth="189.0" text="Μάθημα" />
+          <TableColumn fx:id="availableCoursesName" editable="false" prefWidth="189.0" text="Μάθημα" />
         </columns>
       </TableView>
       <TableView fx:id="selectedCoursesTable" layoutX="397.0" layoutY="100.0" prefHeight="292.0" prefWidth="335.0">
@@ -33,9 +33,9 @@
       <Label alignment="CENTER" layoutX="105.0" layoutY="65.0" prefHeight="24.0" prefWidth="172.0" text="Διαθεσιμα μαθηματα" />
       <Label alignment="CENTER" layoutX="479.0" layoutY="65.0" prefHeight="24.0" prefWidth="172.0" text="Επιλεγμενα μαθηματα" />
       <Button layoutX="131.0" layoutY="404.0" mnemonicParsing="false" onAction="#addButtonPresses" prefHeight="41.0" prefWidth="120.0" text="Προσθηκη" />
-      <Button layoutX="522.0" layoutY="463.0" mnemonicParsing="false" onAction="#registerCourses" prefHeight="41.0" prefWidth="120.0" text="Υποβολη" />
-      <Button layoutX="522.0" layoutY="410.0" mnemonicParsing="false" onAction="#removeDoubleClick" prefHeight="41.0" prefWidth="120.0" text="Διαγραφή" />
+      <Button layoutX="521.0" layoutY="404.0" mnemonicParsing="false" onAction="#registerCourses" prefHeight="41.0" prefWidth="120.0" text="Υποβολη" />
       <Label fx:id="success" alignment="CENTER" layoutX="79.0" layoutY="486.0" prefHeight="24.0" prefWidth="224.0" />
       <Label alignment="CENTER" layoutX="117.0" layoutY="451.0" prefHeight="24.0" prefWidth="147.0" text="Μεγιστες ΔΜ: 12" textAlignment="CENTER" />
+      <Button layoutX="521.0" layoutY="466.0" mnemonicParsing="false" onAction="#removeButtonPressed" prefHeight="41.0" prefWidth="120.0" text="Διαγραφή" />
    </children>
 </AnchorPane>

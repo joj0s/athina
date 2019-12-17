@@ -5,8 +5,8 @@
  */
 package athina.models;
 
-import athina.models.Student;
-import athina.models.Course;
+import java.time.LocalDate;
+import java.util.Date;
 
 /**
  *
@@ -18,11 +18,15 @@ public class CourseRegistration {
     private Course course;
     private String registrationSemester;
     private float grade;
+    private LocalDate dateExamined;
+    private LocalDate dateRegistered;
 
-    public CourseRegistration(Student student, Course course, String registrationSemester) {
+
+    public CourseRegistration(Student student, Course course, String registrationSemester,LocalDate dateRegistered) {
         this.student = student;
         this.course = course;
         this.registrationSemester = registrationSemester;
+        this.dateRegistered = dateRegistered;
     }
 
     public Student getStudent() {
@@ -39,6 +43,18 @@ public class CourseRegistration {
 
     public void setGrade(float grade) {
         this.grade = grade;
+    }
+    
+    public void setDateExamined(LocalDate date) {
+        this.dateExamined = date;
+    }
+    
+    public LocalDate getDateExamined() {
+        return dateExamined;
+    }
+    
+    public LocalDate getDateRegistered() {
+                return dateRegistered;
     }
 
     public float getGrade() {

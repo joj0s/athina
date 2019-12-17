@@ -10,9 +10,9 @@ import athina.models.Course;
 import athina.models.CourseRegistration;
 import athina.Data;
 import athina.models.Student;
-import java.awt.event.MouseEvent;
 import java.io.IOException;
 import java.net.URL;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
@@ -55,7 +55,10 @@ public class CourseRegistrationSceneController implements Initializable {
     @FXML 
     private Label success;
     
-    private ObservableList<Course> selected = FXCollections.observableArrayList();
+    private int totalCredits = 0;
+    private Student student = (Student) Athina.user;
+    
+    private ObservableList<Course> selectedCourses = FXCollections.observableArrayList();
     
     @Override
     public void initialize(URL url, ResourceBundle rb) {
@@ -64,8 +67,7 @@ public class CourseRegistrationSceneController implements Initializable {
         availableCoursesName.setCellValueFactory(new PropertyValueFactory<Course,String>("name"));
         selectedCoursesSemester.setCellValueFactory(new PropertyValueFactory<Course,Integer>("semester"));
         selectedCoursesCredits.setCellValueFactory(new PropertyValueFactory<Course,Integer>("credits"));
-        selectedCoursesName.setCellValueFactory(new PropertyValueFactory<Course,String>("name"));
-        
+        selectedCoursesName.setCellValueFactory(new PropertyValueFactory<Course,String>("name"));        
         addAllCoursesToTable();
     }    
     
@@ -108,54 +110,90 @@ public class CourseRegistrationSceneController implements Initializable {
     }
     
     public void addButtonPresses(ActionEvent event){
-        Course select = availableCoursesTable.getSelectionModel().getSelectedItem();
-        if (!selected.contains(select)){
-            selected.add(select);
-        }
-        selectedCoursesTable.setItems(selected);
-    }
-    
-    public void removeDoubleClick(ActionEvent event){
-        Course select = selectedCoursesTable.getSelectionModel().getSelectedItem();
-        selected.remove(select);
-        selectedCoursesTable.setItems(selected);
-    }
-    
-    public void registerCourses(ActionEvent event){
-        Student student = (Student) Athina.user;
         ObservableList<Course> selected = FXCollections.observableArrayList();
-        selected = selectedCoursesTable.getItems();
+        selected = availableCoursesTable.getSelectionModel().getSelectedItems();
         
-        int currentCredits = 0;
         
-        for (Course c: selected)
-            currentCredits += c.getCredits();
-        
-        if (currentCredits > 12) {
+        if ( selected.size() > 1) {
+            success.setText("Μπορείτε να επιλέγετε ένα μάθημα τη φορά");
+            return;
+        }
+                
+        Course currentCourse = selected.get(0); 
+                
+        if (totalCredits + currentCourse.getCredits() > 12) {
             success.setText("Ξεπεράστηκε το όριο ΔΜ");
             return;
         } 
         
         
-        for(int i=0;i<= Data.registrations.length-1;i++) {
-            if (selected.isEmpty()) {
-                break;
-            }
-            else {
-                if(Data.registrations[i] == null){
-                    Data.registrations[i] = new CourseRegistration(student,selected.get(0), "2018-19 XEIM");
-                    selected.remove(0);      
-                }
-            }
-          
-        }
-        int c = 0;
-        for(int i =0;i<= Data.registrations.length-1;i++){
-            if(Data.registrations[i] != null){
-                c++;
+        if (courseIsLab(currentCourse)){
+            if (!courseTheoryIsRegistered(currentCourse)) {
+                success.setText("Η αντίστοιχη θεωρία δεν έχει δηλωθεί");
+                return;
             }
         }
         
+        if (selectedCourses.contains(currentCourse)){
+            success.setText("Αυτό το μάθημα έχει ήδη επιλεχθεί");
+            return;
+        }
+        
+        selectedCourses.add(currentCourse); 
+        totalCredits += currentCourse.getCredits();
+        
+        selectedCoursesTable.setItems(selectedCourses);
+    }
+    
+    public void removeButtonPressed(ActionEvent event){
+        Course removedCourse = selectedCoursesTable.getSelectionModel().getSelectedItem();
+        selectedCourses.remove(removedCourse);
+        totalCredits -= removedCourse.getCredits();
+        selectedCoursesTable.setItems(selectedCourses);
+    }
+    
+    public void registerCourses(ActionEvent event){
+       if (selectedCourses.isEmpty()) {
+           success.setText("Η δήλωση είναι κενή");
+           return;
+       }
+       
+       for(int i=0; i<athina.Data.registrations.length; i++){
+           if (selectedCourses.isEmpty())
+               break;
+           if ( athina.Data.registrations[i] == null ){
+               athina.Data.registrations[i] = new CourseRegistration(student,selectedCourses.get(0), "2018-19 XEIM",LocalDate.now());
+               selectedCourses.remove(0);
+            }
+                
+        }
+       
         success.setText("Επιτυχημένη Δήλωση");
     }
+    
+    private boolean courseIsLab (Course course) {
+        int courseTypeIndex = course.getId().indexOf('-') + 1;
+        return course.getId().charAt(courseTypeIndex) == 'Ε' ;
+    }
+    
+    private boolean courseTheoryIsRegistered (Course course) {
+        String courseTheoryId = course.getId().substring(0, course.getId().indexOf('-')) + "-Θ";
+        ArrayList<CourseRegistration> studentRegistrations = student.getRegistrations();
+        
+        for(CourseRegistration reg: studentRegistrations) {
+            if (reg.getCourse().getId().equals(courseTheoryId) )
+                    return true;         
+        }
+        
+        for(Course c: selectedCourses){
+            if (c.getId().equals(courseTheoryId))
+                    return true;
+        }
+        
+        return false;
+    }
+    
+ 
+    
+    
 }

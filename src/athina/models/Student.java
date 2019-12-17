@@ -40,7 +40,6 @@ public class Student extends User{
     }
     
     public ArrayList<Course> getPassedCourses() {
-        int i = 0;
         ArrayList<Course> passedCourses = new ArrayList<>();
         ArrayList<CourseRegistration> currentRegistrations = this.getRegistrations();
         
