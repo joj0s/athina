@@ -8,7 +8,7 @@ package athina.controllers;
 import athina.models.Course;
 import athina.models.CourseRegistration;
 import athina.Data;
-import athina.models.FormattedCourseRegistration;
+import athina.formatters.FormattedCourseRegistration;
 import athina.models.Student;
 import java.io.IOException;
 import java.net.URL;

@@ -5,7 +5,7 @@
  */
 package athina.controllers;
 
-import athina.models.FormattedAnnouncement;
+import athina.formatters.FormattedAnnouncement;
 import static athina.controllers.AnnouncementsController.selectedAnnouncement;
 import java.io.IOException;
 import java.net.URL;
