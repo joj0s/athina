@@ -41,6 +41,8 @@ public class MasterSceneController implements Initializable {
     private Button logOutButton;
     @FXML
     private Button manageCoursesButton;
+    @FXML
+    private Button regPrintButton;
     
     @FXML
     private AnchorPane pane;
@@ -55,6 +57,7 @@ public class MasterSceneController implements Initializable {
             pane.getChildren().remove(registerButton);
             usernameLabel.setText(Athina.user.getUsername());
             pane.getChildren().remove(manageCoursesButton);
+            pane.getChildren().remove(regPrintButton);
         }
         else if (Athina.user instanceof Professor) {
             pane.getChildren().remove(registrationButton);
@@ -62,6 +65,7 @@ public class MasterSceneController implements Initializable {
             pane.getChildren().remove(registerButton);
             pane.getChildren().remove(loginButton);
             pane.getChildren().remove(manageCoursesButton);
+            pane.getChildren().remove(regPrintButton);
             usernameLabel.setText(Athina.user.getUsername());
         }
         else if (Athina.user instanceof Admin) {
@@ -76,6 +80,7 @@ public class MasterSceneController implements Initializable {
             pane.getChildren().remove(gradesButton);
             pane.getChildren().remove(registerButton);
             pane.getChildren().remove(manageCoursesButton);
+            pane.getChildren().remove(regPrintButton);
         }
     }    
     
@@ -132,6 +137,21 @@ public class MasterSceneController implements Initializable {
             Stage window = (Stage)((Node)event.getSource()).getScene().getWindow();
             window.setScene(registerScene);
             window.setTitle("Athina - Εγγραφή χρήστη");
+            window.show();
+        }
+        catch(IOException e){
+            e.printStackTrace();
+        }   
+        
+    }
+    
+    public void regPrintButtonPressed(ActionEvent event) {
+        
+        try{
+            Scene regPrintScene = new Scene (FXMLLoader.load(getClass().getResource("/athina/views/PrintRegInfoScene.fxml")));
+            Stage window = (Stage)((Node)event.getSource()).getScene().getWindow();
+            window.setScene(regPrintScene);
+            window.setTitle("Athina - Κατάσταση φοιτητών");
             window.show();
         }
         catch(IOException e){
