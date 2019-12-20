@@ -13,6 +13,7 @@ import athina.models.Admin;
 import athina.models.User;
 import athina.models.Announcement;
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.Date;
 
 /**
@@ -148,5 +149,14 @@ public class Data {
                 return;
             }
         }
+    }
+    
+    public static void insertRegistration(Student student, Course course) {
+        for(int i=0; i<registrations.length; i++){
+            if (registrations[i] == null) {
+                registrations[i] = new CourseRegistration(student, course, "2018-19 XEIM",LocalDate.now());
+            }
+        }
+        
     }
 }
