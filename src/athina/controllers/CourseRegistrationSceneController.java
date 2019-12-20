@@ -56,12 +56,13 @@ public class CourseRegistrationSceneController implements Initializable {
     private Label success;
     
     private int totalCredits = 0;
-    private Student student = (Student) Athina.user;
+    private Student student;
     
     private ObservableList<Course> selectedCourses = FXCollections.observableArrayList();
     
     @Override
     public void initialize(URL url, ResourceBundle rb) {
+        student = (Student) Athina.user;
         availableCoursesSemester.setCellValueFactory(new PropertyValueFactory<Course,Integer>("semester"));
         availableCoursesCredits.setCellValueFactory(new PropertyValueFactory<Course,Integer>("credits"));
         availableCoursesName.setCellValueFactory(new PropertyValueFactory<Course,String>("name"));
@@ -71,6 +72,9 @@ public class CourseRegistrationSceneController implements Initializable {
         addAllCoursesToTable();
     }    
     
+    public void setStudent(Student student) {
+        this.student = student;
+    }
     public void backButtonPressed(ActionEvent event) {
         try{
             Scene loginScene = new Scene (FXMLLoader.load(getClass().getResource("/athina/views/MasterScene.fxml")));
@@ -91,7 +95,7 @@ public class CourseRegistrationSceneController implements Initializable {
         availableCoursesTable.setItems(courses);
     }
     
-    private ObservableList<Course> getAvailableCourses(){
+    public ObservableList<Course> getAvailableCourses(){
         ObservableList<Course> courses = FXCollections.observableArrayList();
         Student student = (Student)Athina.user;
         ArrayList<Course> passedCourses = student.getPassedCourses();
@@ -171,14 +175,17 @@ public class CourseRegistrationSceneController implements Initializable {
         success.setText("Επιτυχημένη Δήλωση");
     }
     
-    private boolean courseIsLab (Course course) {
+    public boolean courseIsLab (Course course) {
         int courseTypeIndex = course.getId().indexOf('-') + 1;
         return course.getId().charAt(courseTypeIndex) == 'Ε' ;
     }
     
-    private boolean courseTheoryIsRegistered (Course course) {
+    public boolean courseTheoryIsRegistered (Course course) {
         String courseTheoryId = course.getId().substring(0, course.getId().indexOf('-')) + "-Θ";
         ArrayList<CourseRegistration> studentRegistrations = student.getRegistrations();
+        
+        if(studentRegistrations.isEmpty())
+            return false;
         
         for(CourseRegistration reg: studentRegistrations) {
             if (reg.getCourse().getId().equals(courseTheoryId) )

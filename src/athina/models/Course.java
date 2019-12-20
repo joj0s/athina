@@ -13,6 +13,8 @@ import java.util.ArrayList;
  * @author jojos
  */
 public class Course {
+
+    
     
     private String id;
     private String name;
@@ -20,6 +22,10 @@ public class Course {
     private int semester;
     private Professor professor;
     private Course preRequisit;
+    
+    public Course(String id) {
+        this.id = id;
+    }
     
     public Course(String id, String name, int credits, int semester, Professor professor) {
         this.id = id;
